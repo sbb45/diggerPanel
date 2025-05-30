@@ -25,7 +25,7 @@ const LabelDropdown = styled.p`
 const DropdownHeader= styled.div`
     background-color: ${bgColor};
     border-radius: 8px;
-    padding: 8px 12px 8px 20px;
+    padding: 6px 12px 6px 20px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@ const DropdownList = styled.ul<{$isOpen: boolean}>`
     align-items: start;
     flex-direction: column;
     background-color: ${bgColor};
-    padding: 16px 8px;
+    padding: 8px;
     border-radius: 8px;
     overflow: hidden;
     width: 100%;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {bgColor, grayColor} from "@/styles/colors";
+import {bgColor, bgHoverColor, grayColor} from "@/styles/colors";
 import Image from "next/image";
 
 type Column = {
@@ -8,7 +8,7 @@ type Column = {
     label: string;
 };
 type Agent = {
-    [key: string]: string | number | boolean | object | null
+    [key: string]: string | number | boolean | object | null | React.ReactNode
 }
 type TableProps = {
     columns: Column[];
@@ -51,9 +51,8 @@ const TableBody = styled.tbody`
         position: relative;
         z-index: 3;
         padding: 0 12px;
-        height: 70px;
+        height: 80px;
         font-size: 16px;
-
         &:first-child::before {
             content: "";
             position: absolute;
@@ -98,7 +97,7 @@ const TableBtn =styled.button`
     background-color: ${bgColor};
     transition: background-color .4s ease;
     &:hover {
-        background-color: #dcdcdc;
+        background-color: ${bgHoverColor};
     }
 `
 
@@ -135,16 +134,16 @@ const Table = ({columns, data}: TableProps) => {
                                             <Image src={'/icons/refresh.svg'} alt={'refresh'} width={28} height={28} />
                                         </TableBtn>
                                         <TableBtn onClick={() => handleDelete(row)} title={'Удалить'}>
-                                            <Image src={'/icons/trash.svg'} alt={'trash'} width={28} height={28} />
+                                            <Image src={'/icons/pause.svg'} alt={'trash'} width={28} height={28} />
                                         </TableBtn>
                                         <TableBtn onClick={() => handleEdit(row)} title={'Настройки'}>
                                             <Image src={'/icons/options.svg'} alt={'options'} width={28} height={28} />
                                         </TableBtn>
                                     </TableActions>
                                 ) : typeof row[col.key] === "boolean" ? (
-                                    row[col.key] ? <span className={'online'}></span> : <span className={'offline'}></span>
-                                ) : (
-                                    JSON.stringify(row[col.key])
+                                    row[col.key] ? <span className="online"></span> : <span className="offline"></span>
+                                ): (
+                                    <>{row[col.key]}</>
                                 )}
                             </td>
                         ))}

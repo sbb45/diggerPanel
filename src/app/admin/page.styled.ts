@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {bgColor, grayColor, primaryColor, primaryHoverColor, whiteColor} from "@/styles/colors";
+import {bgColor, primaryColor, primaryHoverColor, whiteColor} from "@/styles/colors";
 
 
 export const ListManagement = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     width: 90%;
     margin: 0 auto 40px;
     span{

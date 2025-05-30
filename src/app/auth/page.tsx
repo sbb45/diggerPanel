@@ -22,7 +22,8 @@ export default function AuthPage() {
         try {
             const res = await fetch(`${api}/api/v1/auth`, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                credentials: 'include'
             })
             if (!res.ok) {
                 const text = await res.text();
