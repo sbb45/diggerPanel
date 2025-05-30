@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from "styled-components";
 import Image from "next/image";
-import {bgColor, primaryColor, whiteColor} from "@/styles/colors";
+import {bgColor, grayColor, primaryColor, whiteColor} from "@/styles/colors";
 
 type Option = {
     value: string,
@@ -9,10 +9,18 @@ type Option = {
 }
 type DropdownProps = {
     options: Option[];
+    value: Option;
+    onChange: (option: Option) => void;
+    label: string;
 }
 
 const DropdownWrapper = styled.div`
     position: relative;
+`
+const LabelDropdown = styled.p`
+    color: ${grayColor};
+    font-size: 18px;
+    margin-bottom: 4px;
 `
 const DropdownHeader= styled.div`
     background-color: ${bgColor};
@@ -56,16 +64,15 @@ const DropdownLink = styled.li`
     }
 `
 
-const Dropdown = ({options}:DropdownProps) => {
+const Dropdown = ({options, value, onChange, label}:DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState<Option>(options[0])
     const dropdownRef = useRef<HTMLDivElement>(null)
 
     function toggleOpen(){
         setIsOpen((prev)=> !prev)
     }
     function handleSelect(option: Option){
-        setSelected(option);
+        onChange(option);
         setIsOpen(false);
     }
 
@@ -84,18 +91,18 @@ const Dropdown = ({options}:DropdownProps) => {
 
     return (
         <DropdownWrapper ref={dropdownRef}>
+            <LabelDropdown>{label}</LabelDropdown>
             <DropdownHeader onClick={toggleOpen}>
-                <p>{selected.label}</p>
+                <p>{value.label}</p>
                 <Image src={'/icons/arrow.svg'} alt={'arrow'} width={32} height={32} />
             </DropdownHeader>
-
-                <DropdownList $isOpen={isOpen}>
-                    {options.map((option, i)=>(
-                        <DropdownLink key={i} onClick={()=> handleSelect(option)}>
-                            {option.label}
-                        </DropdownLink>
-                    ))}
-                </DropdownList>
+            <DropdownList $isOpen={isOpen}>
+                {options.map((option, i)=>(
+                    <DropdownLink key={i} onClick={()=> handleSelect(option)}>
+                        {option.label}
+                    </DropdownLink>
+                ))}
+            </DropdownList>
         </DropdownWrapper>
     );
 };

@@ -7,9 +7,12 @@ type Column = {
     key: string;
     label: string;
 };
+type Agent = {
+    [key: string]: string | number | boolean | object | null
+}
 type TableProps = {
     columns: Column[];
-    data: Record<string, string | number | boolean>[];
+    data: Agent[];
 };
 
 const TableWrapper = styled.table`
@@ -38,9 +41,9 @@ const TableHeader = styled.thead`
 const TableBody = styled.tbody`
     tr {
         position: relative;
-
         &:hover td:first-child::before {
             background-color: ${bgColor};
+            border-radius: 10px;
         }
     }
 
@@ -48,15 +51,15 @@ const TableBody = styled.tbody`
         position: relative;
         z-index: 3;
         padding: 0 12px;
-        height: 80px;
-        font-size: 18px;
+        height: 70px;
+        font-size: 16px;
 
         &:first-child::before {
             content: "";
             position: absolute;
             top: 0;
             left: -2vw;
-            width: 75vw;
+            width: 77vw;
             height: 100%;
             background-color: transparent;
             z-index: 1;
@@ -70,6 +73,7 @@ const TableBody = styled.tbody`
             height: 40px;
             z-index: 3;
             position: relative;
+            border-radius: 10px;
             &.online {
                 background-color: #34C759;
             }
@@ -123,24 +127,24 @@ const Table = ({columns, data}: TableProps) => {
             <TableBody>
                 {data.map((row, i)=>(
                     <tr key={i}>
-                        {columns.map((col)=>(
+                        {columns.map((col) => (
                             <td key={col.key}>
                                 {col.key === "actions" ? (
                                     <TableActions>
                                         <TableBtn onClick={() => handleUpdate(row)} title={'Обновить'}>
-                                            <Image src={'/icons/refresh.svg'} alt={'refresh'} width={28} height={28}/>
+                                            <Image src={'/icons/refresh.svg'} alt={'refresh'} width={28} height={28} />
                                         </TableBtn>
                                         <TableBtn onClick={() => handleDelete(row)} title={'Удалить'}>
-                                            <Image src={'/icons/trash.svg'} alt={'trash'} width={28} height={28}/>
+                                            <Image src={'/icons/trash.svg'} alt={'trash'} width={28} height={28} />
                                         </TableBtn>
                                         <TableBtn onClick={() => handleEdit(row)} title={'Настройки'}>
-                                            <Image src={'/icons/options.svg'} alt={'options'} width={28} height={28}/>
+                                            <Image src={'/icons/options.svg'} alt={'options'} width={28} height={28} />
                                         </TableBtn>
                                     </TableActions>
                                 ) : typeof row[col.key] === "boolean" ? (
                                     row[col.key] ? <span className={'online'}></span> : <span className={'offline'}></span>
                                 ) : (
-                                    row[col.key]
+                                    JSON.stringify(row[col.key])
                                 )}
                             </td>
                         ))}

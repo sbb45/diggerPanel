@@ -6,7 +6,7 @@ const TextCopyright = styled.p`
     color: ${grayColor};
     font-size: 14px;
     text-align: center;
-    margin: 16px 0;
+    margin: 24px 0;
 `
 const LinkCopyright = styled.a`
     color: ${primaryColor};

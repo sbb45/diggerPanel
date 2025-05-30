@@ -1,0 +1,2714 @@
+[
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	},
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	},
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test245",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	},
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	},
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	},
+	{
+		"Id": 10000,
+		"Created": "2025-05-24T12:40:36.9733955+03:00",
+		"Updated": "2025-05-25T23:18:29.7223488+03:00",
+		"Serial": "e01e5ce5-4552-4214-ba0b-ad2d6123e2a3",
+		"Group": "test245",
+		"Note": "nb-zempty",
+		"Mode": 3,
+		"Percent": 0.2,
+		"HAddr": "0a:00:27:00:00:2a",
+		"Version": "1.0.52-unreleased",
+		"Kernel": "10.0.19045.5854 Build 19045.5854",
+		"Address": "127.0.0.1",
+		"Type": "proxy",
+		"State": true,
+		"Online": false,
+		"Connected": "2025-05-25T20:13:04.4092052Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "127.0.0.1:1312",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "admin",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "redirect",
+						"Username": "vaizmanai",
+						"Worker": "*",
+						"Firmware": "*",
+						"PeriodLegalMin": 60,
+						"PeriodIllegalMin": 60,
+						"Extra": "127.0.0.1:1312,redirect.test,123"
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:4040",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "fee-proxy.anthill.farm:5050",
+				"Type": "unknown",
+				"State": false,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:25",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:3333",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "ru.btc.viabtc.io:443",
+				"Type": "btc",
+				"State": true,
+				"Timings": [
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha5",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "xminer-1.2.6-alpha4",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					},
+					{
+						"Disabled": false,
+						"Type": "fee",
+						"Username": "*",
+						"Worker": "*",
+						"Firmware": "a123",
+						"PeriodLegalMin": 0,
+						"PeriodIllegalMin": 0,
+						"Extra": ""
+					}
+				],
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3,
+			"UserSessionCount": 16,
+			"TaskCount": 373,
+			"SubmitCount": 318,
+			"AcceptedHash": 33259520,
+			"AcceptCount": 315,
+			"ErrorCount": 3,
+			"DevCurFee": 0.5,
+			"DevAvgFee": 0.4375,
+			"UserCurFee": 1.5,
+			"UserAvgFee": 1.2499923706054688,
+			"LastAccepted": "2025-05-25T21:21:40.8011893Z"
+		},
+		"Referrals": {}
+	},
+	{
+		"Id": 10001,
+		"Created": "2025-05-26T09:03:42.6365314+03:00",
+		"Updated": "2025-05-29T09:41:34.1370928-07:00",
+		"Serial": "b2dfdd70-4530-35d3-b253-64114b4404cf",
+		"Group": "new",
+		"Note": "mockup-2",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:02:31:cb:d2:3a",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-911-1",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3937,
+			"UserSessionCount": 20273,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1180
+		}
+	},
+	{
+		"Id": 10002,
+		"Created": "2025-05-26T09:03:42.6370353+03:00",
+		"Updated": "2025-05-29T09:41:34.1369448-07:00",
+		"Serial": "90b7eb3b-c5c2-3cbc-b9c1-8603fcef6c8d",
+		"Group": "new",
+		"Note": "mockup-1r",
+		"Mode": 0,
+		"Percent": 0,
+		"HAddr": "00:05:35:cd:d2:fa",
+		"Version": "0.0.1-m",
+		"Kernel": "6.3.0-914-3",
+		"Address": "255.255.255.255",
+		"Type": "mockup",
+		"State": true,
+		"Online": true,
+		"Connected": "2025-05-29T11:31:58.268698Z",
+		"Pause": false,
+		"Filters": [
+			{
+				"Note": "",
+				"Dst": "172.65.24.253:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.196.131:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.249.114:8888",
+				"Type": "ltc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "172.65.233.152:3333",
+				"Type": "btc",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "146.190.205.227:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			},
+			{
+				"Note": "",
+				"Dst": "194.67.196.95:4040",
+				"Type": "fee",
+				"State": false,
+				"Timings": null,
+				"Debug": false
+			}
+		],
+		"Statistic": {
+			"DevSessionCount": 3585,
+			"UserSessionCount": 18460,
+			"TaskCount": 0,
+			"SubmitCount": 0,
+			"AcceptedHash": 0,
+			"AcceptCount": 0,
+			"ErrorCount": 0,
+			"DevCurFee": 0,
+			"DevAvgFee": 0,
+			"UserCurFee": 0,
+			"UserAvgFee": 0,
+			"LastAccepted": "0001-01-01T00:00:00Z"
+		},
+		"Referrals": {
+			"127.0.0.1:1312-another.referal1": 1075
+		}
+	}
+]
