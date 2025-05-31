@@ -1,14 +1,19 @@
 'use client';
-import {ListManagement, Loading, PaginateBtn, PaginateList} from "@/app/admin/page.styled";
-import AdminStatistic from "@/components/AdminStatistic";
+import {ListManagement, Loading, PaginateBtn, PaginateList, TableActions} from "@/app/admin/page.styled";
+import AdminStatistic from "@/components/Admin/AdminStatistic";
 import React, {useCallback, useEffect, useState} from "react";
-import Dropdown from "@/components/Dropdown";
-import Table from "@/components/Table";
-import CopyrightAdmin from "@/components/CopyrightAdmin";
-import ClientAdminLayout from "@/components/ClientAdminLayout";
+import Dropdown from "@/components/UI/Dropdown";
+import Table from "@/components/UI/Table";
+import CopyrightAdmin from "@/components/UI/CopyrightAdmin";
+import ClientAdminLayout from "@/components/Admin/ClientAdminLayout";
 import AgentsLocal from "@/app/admin/agents.json"
-import ClearFilter from "@/components/ClearFilter";
-import {useToast} from "@/components/Toast/ToastProvider";
+import ClearFilter from "@/components/UI/ClearFilter";
+import {useUI} from "@/components/UI/UIProvider";
+import FunctionBtn from "@/components/UI/FunctionBtn";
+import SyncButton from "@/components/Agents/SyncButton";
+import {Agent, AgentAll} from "@/lib/types";
+import PauseButton from "@/components/Agents/PauseButton";
+import OptionsButton from "@/components/Agents/OptionsButton";
 
 const columns = [
     {key: "Online", label: ""},
@@ -17,21 +22,8 @@ const columns = [
     {key: "Address", label: "Address/Mode"},
     {key: "Version", label: "Version"},
     {key: "Connected", label: "Connected"},
-    { key: "actions", label: "" },
+    {key: "actions", label: ""},
 ];
-
-type Agent = {
-    Id: number;
-    Serial: string;
-    Group: string;
-    Note: string;
-    Address: string;
-    HAddr: string;
-    Version: string;
-    Type: string;
-    Online: boolean;
-    Connected: string;
-};
 
 const filterOnline = [
     {value: 'all', label: 'All'},
@@ -42,68 +34,70 @@ const filterOnline = [
 export default function Page() {
     const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(true);
-    const {addToast} = useToast();
+    const {addToast} = useUI();
     const [data, setData] = useState<Record<string, React.ReactNode>[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     const [filterOnlineValue, setFilterOnlineValue] = useState(filterOnline[0])
-    const [filterGroup, setFilterGroup] = useState<{value:string, label:string}[]>([{value:'all', label:'All'}])
+    const [filterGroup, setFilterGroup] = useState<{ value: string, label: string }[]>([{value: 'all', label: 'All'}])
     const [filterGroupValue, setFilterGroupValue] = useState(filterGroup[0])
 
-    useEffect(() => {
-        async function fetchAgents(){
-            try {
-                const res = await fetch(api + '/api/v1/agents', {
-                    credentials: 'include',
-                })
-                if(!res.ok){
-                    const errorText = await res.text();
-                    throw new Error(`Ошибка сервера: ${res.status} ${errorText}`);
-                }
-                const agents: Agent[] = await res.json();
 
-                // Заполнение списка уникальными значениями
-                const groupsSet = new Set<string>();
-                agents.forEach(agent=>{
-                    if(agent.Group){
-                        groupsSet.add(agent.Group)
-                    }
-                })
-                setFilterGroup([
-                    {value:'all', label:"All"},
-                    ...Array.from(groupsSet).map(group => ({value:group, label:group}))
-                ])
-
-                const format = agents.map((item)=>({
-                    Online: item.Online,
-                    Serial: item.Serial,
-                    FilterGroup: item.Group,
-                    Group: (<>
-                        {item.Note}
-                        <br />
-                        ({item.Group})
-                    </>),
-                    Address: item.Address,
-                    Version: (<>
-                        {item.Version}
-                        <br />
-                        ({item.Type})
-                    </>),
-                    Connected: item.Connected,
-                }))
-                console.log(format)
-                setData(format)
-            }catch(err){
-                addToast({
-                    type:"danger",
-                    title: 'Loading error',
-                    message: err instanceof Error ? err.message : 'Неизвестная ошибка'
-                })
-                console.error('Ошибка при загрузке агентов:', err)
-            }finally {
-                setLoading(false)
+    const fetchAgents = async () => {
+        setLoading(true)
+        try {
+            const res = await fetch(api + '/api/v1/agents', {
+                credentials: 'include',
+            })
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(`Ошибка сервера: ${res.status} ${errorText}`);
             }
+            const agents: Agent[] = await res.json();
+
+            // Заполнение списка уникальными значениями
+            const groupsSet = new Set<string>();
+            agents.forEach(agent => {
+                if (agent.Group) {
+                    groupsSet.add(agent.Group)
+                }
+            })
+            setFilterGroup([
+                {value: 'all', label: "All"},
+                ...Array.from(groupsSet).map(group => ({value: group, label: group}))
+            ])
+
+            const format = agents.map((item) => ({
+                Online: item.Online,
+                Serial: item.Serial,
+                FilterGroup: item.Group,
+                Group: (<>
+                    {item.Note}
+                    <br/>
+                    ({item.Group})
+                </>),
+                Address: item.Address,
+                Version: (<>
+                    {item.Version}
+                    <br/>
+                    ({item.Type})
+                </>),
+                Connected: item.Connected,
+            }))
+            setData(format)
+        } catch (err) {
+            addToast({
+                type: "danger",
+                title: 'Loading error',
+                message: err instanceof Error ? err.message : 'Unknown error'
+            })
+            console.error('Error when loading agents:', err)
+        } finally {
+            setLoading(false)
         }
+    };
+
+    useEffect(() => {
         fetchAgents()
     }, []);
 
@@ -114,17 +108,16 @@ export default function Page() {
     }, []);
 
     const statistic = {
-        total: {count:data.length, text:'Total Agents'},
-        mainLabel: {count: data.filter(agent => agent.Online).length, text:'Online Agents'},
-        subLabel: {count: data.filter(agent => !agent.Online).length, text:'Offline Agents'},
+        total: {count: data.length, text: 'Total Agents'},
+        mainLabel: {count: data.filter(agent => agent.Online).length, text: 'Online Agents'},
+        subLabel: {count: data.filter(agent => !agent.Online).length, text: 'Offline Agents'},
     };
 
     // Фильтры
-    const filterAgents = data.filter(agent =>{
-        if(filterOnlineValue.value === 'online' && !agent.Online) return false;
-        if(filterOnlineValue.value === 'offline' && agent.Online) return false;
-
-        if(filterGroupValue.value !== 'all' && agent.FilterGroup !== filterGroupValue.value) return false;
+    const filterAgents = data.filter(agent => {
+        if (filterOnlineValue.value === 'online' && !agent.Online) return false;
+        if (filterOnlineValue.value === 'offline' && agent.Online) return false;
+        if (filterGroupValue.value !== 'all' && agent.FilterGroup !== filterGroupValue.value) return false;
 
         return true
     })
@@ -134,9 +127,9 @@ export default function Page() {
     const startIndex = (currentPage - 1) * itemsPage
     const paginateAgents = filterAgents.slice(startIndex, startIndex + itemsPage)
     const totalPages = Math.ceil(filterAgents.length / itemsPage);
-    const pages = Array.from({length: totalPages}, (_,i)=> i+1)
+    const pages = Array.from({length: totalPages}, (_, i) => i + 1)
 
-    useEffect(()=>{
+    useEffect(() => {
         setCurrentPage(1)
     }, [filterOnlineValue, filterGroupValue])
 
@@ -145,33 +138,79 @@ export default function Page() {
         setFilterGroupValue(filterGroup[0]);
     }, [filterOnline, filterGroup]);
 
+    // Управление Агентом
+    const buttons = (row: AgentAll) => (
+        <TableActions>
+            <SyncButton row={row} />
+            <PauseButton row={row} />
+            <OptionsButton row={row} />
+        </TableActions>
+    )
+
+
+    // Общие активности
+    async function backupAction() {
+        try {
+            window.open(api + '/api/v1/agents/export', '_blank')
+        } catch (err) {
+            addToast({
+                type: 'danger',
+                title: 'Backup error',
+                message: err instanceof Error ? err.message : 'Unknown error'
+            })
+            console.error("Backup error", err)
+        }
+    }
+    async function sync() {
+        try {
+            const res = await fetch(api + '/api/v1/agents/sync');
+            if (!res.ok) throw new Error(`Sync failed: ${res.statusText}`);
+            addToast({
+                type: 'success',
+                title: 'Sync successful',
+                message: 'Agents synchronized successfully'
+            })
+        } catch (err) {
+            console.error(err);
+            addToast({
+                type: 'danger',
+                title: 'Sync error',
+                message: err instanceof Error ? err.message : 'Unknown error'
+            })
+        }
+    }
+
     return (
         <ClientAdminLayout>
-            <AdminStatistic statistic={statistic} />
+            <AdminStatistic statistic={statistic}/>
             <ListManagement>
                 <span>
-                    <Dropdown label={'Status'} options={filterOnline} value={filterOnlineValue} onChange={setFilterOnlineValue} />
-                    <Dropdown label={'Group'} options={filterGroup} value={filterGroupValue} onChange={setFilterGroupValue} />
+                    <Dropdown label={'Status'} options={filterOnline} value={filterOnlineValue} onChange={setFilterOnlineValue}/>
+                    <Dropdown label={'Group'} options={filterGroup} value={filterGroupValue} onChange={setFilterGroupValue}/>
+                     <ClearFilter onClick={handleClearFilters}/>
                 </span>
                 <span>
-                    <ClearFilter onClick={handleClearFilters} />
+                    <FunctionBtn onClick={fetchAgents} title={'Refresh'} image={'refresh.svg'}/>
+                    <FunctionBtn onClick={sync} title={'Sync'} image={'sync.svg'}/>
+                    <FunctionBtn onClick={backupAction} title={'Backup'} image={'download.svg'}/>
                 </span>
             </ListManagement>
             {loading ? (
-                <Loading />
+                <Loading/>
             ) : (
-                <Table columns={columns} data={paginateAgents} />
+                <Table columns={columns} data={paginateAgents} buttons={buttons}/>
             )}
             {totalPages !== 1 ? (
                 <PaginateList>
-                    {pages.map(page=>(
-                        <PaginateBtn key={page} onClick={()=>setCurrentPage(page)} className={currentPage === page ? 'active' : ''}>
+                    {pages.map(page => (
+                        <PaginateBtn key={page} onClick={() => setCurrentPage(page)}
+                                     className={currentPage === page ? 'active' : ''}>
                             {page}
                         </PaginateBtn>
                     ))}
                 </PaginateList>
-            ): null}
-            <CopyrightAdmin />
+            ) : null}
+            <CopyrightAdmin/>
         </ClientAdminLayout>
     );
 }

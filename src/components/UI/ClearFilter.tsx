@@ -21,7 +21,7 @@ const BtnClear = styled.button`
 const ClearFilter: React.FC<ClearFilterProps> = ({onClick}) => {
     return (
         <BtnClear onClick={onClick}>
-            <Image src={'/icons/close.svg'} alt={'close'} width={32} height={32} />
+            <Image src={'/icons/close.svg'} alt={'close'} width={28} height={28} />
         </BtnClear>
     );
 };

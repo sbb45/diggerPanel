@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {bgColor, primaryColor, primaryHoverColor, whiteColor} from "@/styles/colors";
+import {bgColor, bgHoverColor, primaryColor, primaryHoverColor, whiteColor} from "@/styles/colors";
 
 
 export const ListManagement = styled.div`
@@ -11,8 +11,8 @@ export const ListManagement = styled.div`
     span{
         display: flex;
         justify-content: center;
-        align-items: center;
-        gap: 20px;
+        align-items: end;
+        gap: 14px;
     }
 `
 export const Loading = styled.div`
@@ -62,5 +62,27 @@ export const PaginateBtn = styled.button`
         &:hover {
             background-color: ${primaryHoverColor};
         }
+    }
+`
+export const TableActions = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+`
+export const TableBtn =styled.button`
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: ${bgColor};
+    transition: background-color .4s ease;
+    &:hover {
+        background-color: ${bgHoverColor};
+    }
+    &:hover:disabled {
+        background-color: ${bgColor};
+    }
+    &:disabled{
+        opacity: .4;
     }
 `

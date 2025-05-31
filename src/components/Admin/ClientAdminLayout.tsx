@@ -1,5 +1,5 @@
 'use client';
-import AdminMenu from "@/components/AdminMenu";
+import AdminMenu from "@/components/Admin/AdminMenu";
 import React from "react";
 import styled from "styled-components";
 import {bgColor} from "@/styles/colors";

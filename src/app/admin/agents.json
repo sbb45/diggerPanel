@@ -296,7 +296,7 @@
 		"State": true,
 		"Online": true,
 		"Connected": "2025-05-29T11:31:58.268698Z",
-		"Pause": false,
+		"Pause": true,
 		"Filters": [
 			{
 				"Note": "",

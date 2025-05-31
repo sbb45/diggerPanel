@@ -4,19 +4,15 @@ import styled from "styled-components";
 import {blackColor, dangerColor, grayColor, successColor, warningColor, whiteColor} from "@/styles/colors";
 
 const ToastWrapper = styled.div<{$type: 'success' | 'warning' | 'danger'}>`
-    position: fixed;
     z-index: 100;
-    top: 30px;
-    right: 16px;
     width: 380px;
-    
     background-color: ${whiteColor};
     overflow: hidden;
     border-radius: 12px;
     padding: 18px 20px;
-    -webkit-box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.2);
-    box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.1);
+    -moz-box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.1);
+    box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.1);
     
     display: flex;
     justify-content: start;
@@ -74,12 +70,9 @@ interface ToastProps {
 
 const Toast: React.FC<ToastProps> = ({type='danger', title, message, onClose, duration=3000}) => {
     useEffect(() => {
-        console.log('Toast useEffect onClose:', onClose);
         const timer = setTimeout(() => {
-            console.log('Calling onClose');
             onClose();
         }, duration);
-
         return () => clearTimeout(timer);
     }, [duration, onClose]);
 

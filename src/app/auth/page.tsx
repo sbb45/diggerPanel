@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Image from "next/image";
 import {AuthBg, AuthBtn, AuthError, AuthForm, AuthInput, AuthWrapper} from "@/app/auth/page.styled";
 import {useRouter} from "next/navigation";
-import Copyright from "@/components/Copyright";
+import Copyright from "@/components/UI/Copyright";
 
 export default function AuthPage() {
     const [username, setUsername] = useState('');

@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
-import {bgColor, bgHoverColor, grayColor} from "@/styles/colors";
+import {bgColor, grayColor, successColor} from "@/styles/colors";
 import Image from "next/image";
+import Modal from "@/components/UI/Modal";
+import {useUI} from "@/components/UI/UIProvider";
+import {AgentAll} from "@/lib/types";
+
 
 type Column = {
     key: string;
     label: string;
 };
-type Agent = {
-    [key: string]: string | number | boolean | object | null | React.ReactNode
-}
 type TableProps = {
     columns: Column[];
-    data: Agent[];
+    data: AgentAll[];
+    buttons: (row: AgentAll) => React.ReactNode;
 };
 
 const TableWrapper = styled.table`
@@ -74,7 +76,7 @@ const TableBody = styled.tbody`
             position: relative;
             border-radius: 10px;
             &.online {
-                background-color: #34C759;
+                background-color: ${successColor};
             }
 
             &.offline {
@@ -84,36 +86,10 @@ const TableBody = styled.tbody`
     }
 `;
 
-const TableActions = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-`
-const TableBtn =styled.button`
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: ${bgColor};
-    transition: background-color .4s ease;
-    &:hover {
-        background-color: ${bgHoverColor};
-    }
-`
 
-const Table = ({columns, data}: TableProps) => {
-    function handleEdit(row: object) {
-        console.log("Edit:", row);
-    }
-
-    function handleUpdate(row: object) {
-        console.log("Update:", row);
-    }
-
-    function handleDelete(row: object) {
-        console.log("Delete:", row);
-    }
-
+const Table = ({columns, data, buttons}: TableProps) => {
+    const {addToast} = useUI()
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <TableWrapper>
             <TableHeader>
@@ -129,17 +105,7 @@ const Table = ({columns, data}: TableProps) => {
                         {columns.map((col) => (
                             <td key={col.key}>
                                 {col.key === "actions" ? (
-                                    <TableActions>
-                                        <TableBtn onClick={() => handleUpdate(row)} title={'Обновить'}>
-                                            <Image src={'/icons/refresh.svg'} alt={'refresh'} width={28} height={28} />
-                                        </TableBtn>
-                                        <TableBtn onClick={() => handleDelete(row)} title={'Удалить'}>
-                                            <Image src={'/icons/pause.svg'} alt={'trash'} width={28} height={28} />
-                                        </TableBtn>
-                                        <TableBtn onClick={() => handleEdit(row)} title={'Настройки'}>
-                                            <Image src={'/icons/options.svg'} alt={'options'} width={28} height={28} />
-                                        </TableBtn>
-                                    </TableActions>
+                                    buttons(row)
                                 ) : typeof row[col.key] === "boolean" ? (
                                     row[col.key] ? <span className="online"></span> : <span className="offline"></span>
                                 ): (
@@ -150,6 +116,30 @@ const Table = ({columns, data}: TableProps) => {
                     </tr>
                 ))}
             </TableBody>
+
+            <Modal
+                open={isOpen}
+                onOpenChangeAction={setIsOpen}
+                title="Вы уверены?"
+            >
+                <div className={'content'}>
+                    <Image src={'/icons/trashRed.svg'} alt={'trash'} width={80} height={80} />
+                    <p>Вы уверены что хотите удалить файл?</p>
+                </div>
+                <div className={"btns"}>
+                    <button onClick={()=>setIsOpen(false)} className={'cancel'}>Отмена</button>
+                    <button
+                        className={'delete'}
+                        onClick={()=>{
+                        addToast({
+                            type:"success",
+                            title: 'Файл удалён',
+                            message: 'Файл успешно удалён'
+                        })
+                        setIsOpen(false)
+                    }}>Удалить</button>
+                </div>
+            </Modal>
         </TableWrapper>
     );
 };
