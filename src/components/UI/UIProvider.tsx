@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import Toast from './Toast';
-import Modal from '@/components/UI/Modal'; // Твой универсальный модал (Radix + Framer Motion)
+import Modal from '@/components/UI/Modal';
 
 interface ToastData {
     id: number;

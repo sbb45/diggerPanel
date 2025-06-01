@@ -30,7 +30,7 @@ const ContentWrapper = styled(motion.div)`
     max-width: 800px;
     width: max-content;
     height: max-content;
-    min-height: 310px;
+    min-height: 280px;
     max-height: 60vh;
     transform: translate(-50%, -50%) !important;
     z-index: 999;
@@ -41,6 +41,13 @@ const ContentWrapper = styled(motion.div)`
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
+    div.modal{
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
     div.btns{
         display: flex;
         justify-content: center;
@@ -75,7 +82,7 @@ const ContentWrapper = styled(motion.div)`
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 10px;
+        gap: 16px;
         p{
             font-size: 18px;
         }

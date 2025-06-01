@@ -5,6 +5,10 @@ import styled, {keyframes} from 'styled-components';
 import Image from 'next/image';
 import {AgentAll} from "@/lib/types";
 import {bgColor, bgHoverColor, blackColor, primaryColor, whiteColor} from "@/styles/colors";
+import {useUI} from "@/components/UI/UIProvider";
+import React from "react";
+import Modal from "@/components/UI/Modal";
+import useConfirm from "@/components/UI/UseConfirm";
 
 const slideDown = keyframes`
   from {
@@ -47,7 +51,7 @@ const Content = styled(DropdownMenu.Content)`
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 8px 0;
     user-select: none;
-    z-index: 999;
+    z-index: 500;
     display: flex;
     flex-direction: column; 
     gap: 4px;
@@ -86,6 +90,12 @@ interface OptionsButtonProps {
 }
 
 export default function OptionsButton({ row, actions }: OptionsButtonProps) {
+    const api = process.env.NEXT_PUBLIC_API_BASE
+    const {addToast, openModal, closeModal} = useUI();
+    const confirm = useConfirm();
+
+    const agentId = row.Id
+
     const defaultActions: Action[] = [
         {image:'edit', label: 'Edit Agent', onClick: fillFormEditAgent },
         {image:'sort-horizontal', label: 'Show Connections', onClick: showConnections },
@@ -100,9 +110,9 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
         {image:'trash', label: 'Clean Logs', onClick: cleanLogs },
         {image:'download', label: 'Upgrade Agent', onClick: upgradeAgent },
         {image:'refresh', label: 'Revert Agent', onClick: revertAgent },
-        {image:'disabled', label: 'disable', onClick: disabled },
+        {image:'disabled', label: 'Disable', onClick: disabled },
         {image:'refresh', label: 'Reload Agent', onClick: reloadAgent },
-        {image:'sync', label: 'Restart Device', onClick: restartAgent },
+        {image:'sync', label: 'Restart Device', onClick: restartDevice },
         {image:'trash', label: 'Delete Agent', onClick: deleteAgent }
     ];
 
@@ -116,8 +126,33 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
     function showFilters(){
         alert('ger')
     }
-    function cleanFilters(){
-        alert('ger')
+    async function cleanFilters(){
+        const ok = await confirm({
+            title: 'Clean filters',
+            image: 'eraserRed.svg',
+            message: 'Are you sure you want to clean the filters?',
+            confirmText: 'Clean',
+        })
+        if (!ok) return;
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/filters-clean`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Filters Cleaned',
+                message: 'All filters have been successfully cleaned'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Cleaning error',
+                message: err instanceof Error ? err.message : 'Failed to clean filters'
+            })
+            console.error(err)
+        }
     }
     function showTunnels(){
         alert('ger')
@@ -125,39 +160,240 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
     function showCounters(){
         alert('ger')
     }
-    function cleanCounters(){
-        alert('ger')
+    async function cleanCounters(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/counters-clean`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Counters Cleaned',
+                message: 'All counters have been successfully cleaned'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Cleaning error',
+                message: err instanceof Error ? err.message : 'Failed to clean counters'
+            })
+            console.error(err)
+        }
     }
-    function resetStatistics(){
-        alert('ger')
+    async function resetStatistics(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/reset-statistics`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Statistics Reset',
+                message: 'Agent statistics have been successfully reset'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Reset error',
+                message: err instanceof Error ? err.message : 'Failed to reset statistics'
+            })
+            console.error(err)
+        }
     }
     function showConfig(){
         alert('ger')
     }
-    function downloadLogs(){
-        alert('ger')
+    async function downloadLogs(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/logs`,{
+                method: 'GET',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Logs Downloaded',
+                message: 'Logs have been downloaded successfully'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Download error',
+                message: err instanceof Error ? err.message : 'Failed to download logs'
+            })
+            console.error(err)
+        }
     }
-    function cleanLogs(){
-        alert('ger')
+    async function cleanLogs(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/logs-clean`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Logs Cleaned',
+                message: 'All logs have been successfully cleaned'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Cleaning error',
+                message: err instanceof Error ? err.message : 'Failed to clean logs'
+            })
+            console.error(err)
+        }
     }
-    function upgradeAgent(){
-        alert('ger')
+    async function upgradeAgent(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/upgrade`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Agent Upgraded',
+                message: 'Agent was successfully upgraded'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Upgrade error',
+                message: err instanceof Error ? err.message : 'Failed to upgrade agent'
+            })
+            console.error(err)
+        }
     }
-    function revertAgent(){
-        alert('ger')
+    async function revertAgent(){
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/revert`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: 'Agent Reverted',
+                message: 'Agent was successfully reverted to previous version'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Revert error',
+                message: err instanceof Error ? err.message : 'Failed to revert agent'
+            })
+            console.error(err)
+        }
     }
-    function disabled(){
-        alert('ger')
+    async function disabled(){
+        const state = row.State
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/state/${!state}`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type: 'success',
+                title: !state ? 'Agent Disabled' : 'Agent Enabled',
+                message: `Agent was successfully ${!state ? 'disabled' : 'enabled'}`
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'State switch error',
+                message: err instanceof Error ? err.message : 'Failed to switch agent state'
+            })
+            console.error(err)
+        }
     }
-    function reloadAgent(){
-        alert('ger')
+    async function reloadAgent(){
+        const ok = await confirm({
+            title: 'Reload agent',
+            image: 'syncRed.svg',
+            message: 'Are you sure you want to reload the agent?',
+            confirmText: 'Reload',
+        })
+        if (!ok) return;
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/reload`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type:'success',
+                title: 'Reloaded',
+                message: 'Agent successfully reloaded'
+            })
+        }catch (err){
+            addToast({
+                type: 'danger',
+                title: 'Reload error',
+                message: err instanceof Error ? err.message : 'Failed to reload agent'
+            })
+            console.error(err)
+        }
     }
-    function restartAgent(){
-        alert('ger')
+    async function restartDevice(){
+        const ok = await confirm({
+            title: 'Restart device',
+            image: 'reloadRed.svg',
+            message: 'Are you sure you want to reset the device?',
+            confirmText: 'Restart',
+        })
+        if (!ok) return;
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}/command/restart`,{
+                method: 'POST',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Restart error');
+            addToast({
+                type:'success',
+                title: 'Restarted',
+                message: 'Device restarted successfully'
+            })
+        }catch (err){
+            addToast({
+                type:'danger',
+                title: 'Restart error',
+                message: err instanceof Error ? err.message : 'Failed to restart device'
+            })
+            console.error(err)
+        }
     }
-    function deleteAgent(){
-        alert('ger')
+    async function deleteAgent(){
+        const ok = await confirm({
+            title: 'Delete Agent',
+            message: 'Are you sure you want to delete the agent?',
+        })
+        if (!ok) return;
+        try {
+            const res = await fetch(api+`/api/v1/agents/${agentId}`,{
+                method: 'DELETE',
+                credentials: 'include'
+            })
+            if(!res.ok) throw new Error('Deletion error');
+            addToast({
+                type:'success',
+                title: 'Reloaded',
+                message: 'Agent successfully deleted'
+            })
+        }catch (err){
+            addToast({
+                type:'danger',
+                title: 'Deletion error',
+                message: err instanceof Error ? err.message : 'Unknown error'
+            })
+            console.error(err)
+        }
     }
+
 
 
     return (
@@ -176,8 +412,7 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                     {(actions ?? defaultActions).map(({image, label, onClick }, idx) => (
                         <Item
                             key={idx}
-                            onSelect={e => {
-                                e.preventDefault();
+                            onSelect={() => {
                                 onClick();
                             }}
                             role="menuitem"
