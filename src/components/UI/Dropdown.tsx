@@ -12,6 +12,7 @@ type DropdownProps = {
     value: Option;
     onChange: (option: Option) => void;
     label: string;
+    style?: React.CSSProperties
 }
 
 const DropdownWrapper = styled.div`
@@ -28,7 +29,7 @@ const DropdownHeader= styled.div`
     padding: 6px 12px 6px 20px;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 18px;
     font-size: 22px;
@@ -64,7 +65,7 @@ const DropdownLink = styled.li`
     }
 `
 
-const Dropdown = ({options, value, onChange, label}:DropdownProps) => {
+const Dropdown = ({options, value, onChange, label,style}:DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -90,7 +91,7 @@ const Dropdown = ({options, value, onChange, label}:DropdownProps) => {
     }, []);
 
     return (
-        <DropdownWrapper ref={dropdownRef}>
+        <DropdownWrapper ref={dropdownRef} style={style}>
             <LabelDropdown>{label}</LabelDropdown>
             <DropdownHeader onClick={toggleOpen}>
                 <p>{value.label}</p>

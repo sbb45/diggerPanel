@@ -10,4 +10,5 @@ export const primaryHoverColor = '#3835ba';
 export const dangerColor = '#D93025';
 export const dangerHoverColor = '#b8271e';
 export const successColor = '#3BA55D';
+export const successHoverColor = '#308c4d';
 export const warningColor = '#E4B02C'

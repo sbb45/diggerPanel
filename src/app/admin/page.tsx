@@ -35,7 +35,7 @@ export default function Page() {
     const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(true);
     const {addToast} = useUI();
-    const [data, setData] = useState<Record<string, React.ReactNode>[]>([]);
+    const [data, setData] = useState<{ Item: Agent } & Record<string, React.ReactNode>[]>([])
     const [currentPage, setCurrentPage] = useState(1);
 
     const [filterOnlineValue, setFilterOnlineValue] = useState(filterOnline[0])
@@ -68,6 +68,7 @@ export default function Page() {
             ])
 
             const format = agents.map((item) => ({
+                Item: item,
                 Online: item.Online,
                 Serial: item.Serial,
                 FilterGroup: item.Group,
@@ -102,10 +103,32 @@ export default function Page() {
     }, []);
 
     useEffect(() => {
-        if (!process.env.PRODUCTION) {
-            setData(AgentsLocal);
-        }
+        const format = AgentsLocal.map((item) => ({
+            Item: item,
+            Online: item.Online,
+            Serial: item.Serial,
+            FilterGroup: item.Group,
+            Group: (
+                <>
+                    {item.Note}
+                    <br />
+                    ({item.Group})
+                </>
+            ),
+            Address: item.Address,
+            Version: (
+                <>
+                    {item.Version}
+                    <br />
+                    ({item.Type})
+                </>
+            ),
+            Connected: item.Connected,
+        }))
+        setData(format)
     }, []);
+
+
 
     const statistic = {
         total: {count: data.length, text: 'Total Agents'},

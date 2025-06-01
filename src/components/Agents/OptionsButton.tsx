@@ -9,6 +9,9 @@ import {useUI} from "@/components/UI/UIProvider";
 import React from "react";
 import Modal from "@/components/UI/Modal";
 import useConfirm from "@/components/UI/UseConfirm";
+import Dropdown from "@/components/UI/Dropdown";
+import EditAgentModal from "@/components/Agents/EditAgentModal";
+import ShowConnections from "@/components/Agents/ShowConnections";
 
 const slideDown = keyframes`
   from {
@@ -118,10 +121,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
 
 
     function fillFormEditAgent(){
-        alert('ger')
+        openModal(<EditAgentModal row={row} onClose={closeModal} />, 'Edit Agent')
     }
     function showConnections(){
-        alert('ger')
+        openModal(<ShowConnections row={row} onClose={closeModal} />, 'Remote connections')
     }
     function showFilters(){
         alert('ger')
@@ -139,7 +142,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Filters Cleaned',
@@ -166,7 +172,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Counters Cleaned',
@@ -187,7 +196,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Statistics Reset',
@@ -206,25 +218,7 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
         alert('ger')
     }
     async function downloadLogs(){
-        try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/logs`,{
-                method: 'GET',
-                credentials: 'include'
-            })
-            if(!res.ok) throw new Error('Restart error');
-            addToast({
-                type: 'success',
-                title: 'Logs Downloaded',
-                message: 'Logs have been downloaded successfully'
-            })
-        }catch (err){
-            addToast({
-                type: 'danger',
-                title: 'Download error',
-                message: err instanceof Error ? err.message : 'Failed to download logs'
-            })
-            console.error(err)
-        }
+        window.open(`${api}/api/v1/agents/${agentId}/command/logs`, "_blank")
     }
     async function cleanLogs(){
         try {
@@ -232,7 +226,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Logs Cleaned',
@@ -253,7 +250,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Agent Upgraded',
@@ -274,7 +274,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: 'Agent Reverted',
@@ -296,7 +299,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type: 'success',
                 title: !state ? 'Agent Disabled' : 'Agent Enabled',
@@ -324,7 +330,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type:'success',
                 title: 'Reloaded',
@@ -352,7 +361,10 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
                 method: 'POST',
                 credentials: 'include'
             })
-            if(!res.ok) throw new Error('Restart error');
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText || 'Restart error'); 
+            }
             addToast({
                 type:'success',
                 title: 'Restarted',

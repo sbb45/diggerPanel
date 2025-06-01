@@ -13,7 +13,7 @@ export type Agent = {
     Connected: string;
 };
 export type AgentAll = {
-    [key: string]: string | number | boolean | object | null | React.ReactNode
+    [key: string]: string | number | boolean | object | null | React.ReactNode | undefined
 }
 export interface AgentButtonProps {
     row: AgentAll;

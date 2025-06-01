@@ -6,7 +6,8 @@ import Image from "next/image";
 import {
     bgColor,
     bgHoverColor,
-    dangerColor, dangerHoverColor,
+    dangerColor, dangerHoverColor, 
+    successHoverColor,successColor,
     whiteColor
 } from "@/styles/colors";
 
@@ -31,7 +32,7 @@ const ContentWrapper = styled(motion.div)`
     width: max-content;
     height: max-content;
     min-height: 280px;
-    max-height: 60vh;
+    max-height: 90vh;
     transform: translate(-50%, -50%) !important;
     z-index: 999;
     background-color: ${whiteColor};
@@ -47,6 +48,7 @@ const ContentWrapper = styled(motion.div)`
         flex-direction: column;
         align-items: center;
         gap: 24px;
+        width:100%;
     }
     div.btns{
         display: flex;
@@ -70,6 +72,50 @@ const ContentWrapper = styled(motion.div)`
                 background-color: ${dangerHoverColor};
             }
         }
+        button.success{
+            color: ${whiteColor};
+            background-color: ${successColor};
+            &:hover{
+                background-color: ${successHoverColor};
+            }
+        }
+        button.cancel{
+            background-color: ${bgColor};
+            &:hover{
+                background-color: ${bgHoverColor};
+            }
+        }
+    }
+    div.btns-left{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 60%;
+        gap: 16px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        transition: .4s linear;
+        button{
+
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: .3s;
+            width: 30%;
+        }
+        button.delete{
+            color: ${whiteColor};
+            background-color: ${dangerColor};
+            &:hover{
+                background-color: ${dangerHoverColor};
+            }
+        }
+        button.success{
+            color: ${whiteColor};
+            background-color: ${successColor};
+            &:hover{
+                background-color: ${successHoverColor};
+            }
+        }
         button.cancel{
             background-color: ${bgColor};
             &:hover{
@@ -83,6 +129,7 @@ const ContentWrapper = styled(motion.div)`
         align-items: center;
         flex-direction: column;
         gap: 16px;
+        width: 60%;
         p{
             font-size: 18px;
         }

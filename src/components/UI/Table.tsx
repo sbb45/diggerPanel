@@ -88,8 +88,6 @@ const TableBody = styled.tbody`
 
 
 const Table = ({columns, data, buttons}: TableProps) => {
-    const {addToast} = useUI()
-    const [isOpen, setIsOpen] = useState(false)
     return (
         <TableWrapper>
             <TableHeader>
@@ -105,7 +103,7 @@ const Table = ({columns, data, buttons}: TableProps) => {
                         {columns.map((col) => (
                             <td key={col.key}>
                                 {col.key === "actions" ? (
-                                    buttons(row)
+                                    buttons(row.Item as AgentAll)
                                 ) : typeof row[col.key] === "boolean" ? (
                                     row[col.key] ? <span className="online"></span> : <span className="offline"></span>
                                 ): (
@@ -116,30 +114,6 @@ const Table = ({columns, data, buttons}: TableProps) => {
                     </tr>
                 ))}
             </TableBody>
-
-            <Modal
-                open={isOpen}
-                onOpenChangeAction={setIsOpen}
-                title="Вы уверены?"
-            >
-                <div className={'content'}>
-                    <Image src={'/icons/trashRed.svg'} alt={'trash'} width={80} height={80} />
-                    <p>Вы уверены что хотите удалить файл?</p>
-                </div>
-                <div className={"btns"}>
-                    <button onClick={()=>setIsOpen(false)} className={'cancel'}>Отмена</button>
-                    <button
-                        className={'delete'}
-                        onClick={()=>{
-                        addToast({
-                            type:"success",
-                            title: 'Файл удалён',
-                            message: 'Файл успешно удалён'
-                        })
-                        setIsOpen(false)
-                    }}>Удалить</button>
-                </div>
-            </Modal>
         </TableWrapper>
     );
 };
