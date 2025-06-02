@@ -42,7 +42,7 @@ const SyncButton: React.FC<AgentButtonProps> = ({row}:AgentButtonProps) => {
         }
     }
     return (
-        <TableBtn disabled={!row.Online || loading} onClick={() => syncAgentAction} title={'Синхронизировать'}>
+        <TableBtn disabled={!row.Online || loading} onClick={() => syncAgentAction()} title={'Синхронизировать'}>
             <Image src={'/icons/refresh.svg'} alt={'refresh'} width={28} height={28}/>
         </TableBtn>
     );

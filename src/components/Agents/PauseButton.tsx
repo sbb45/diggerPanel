@@ -5,7 +5,7 @@ import Image from "next/image";
 import {TableBtn} from "@/app/admin/page.styled";
 
 
-const PauseButton = ({row, onUpdate}: AgentButtonProps) => {
+const PauseButton = ({row, fetchAgents}: AgentButtonProps) => {
     const [loading, setLoading] = useState(false)
     const api = process.env.NEXT_PUBLIC_API_BASE
     const action = row.Pause ? 'resume' : 'pause'
@@ -16,7 +16,8 @@ const PauseButton = ({row, onUpdate}: AgentButtonProps) => {
         setLoading(true)
         try {
             const res = await fetch(api+`/api/v1/agents/${row.Id}/command/${action}`,{
-                method: 'POST'
+                method: 'POST',
+                credentials: "include"
             })
             if(!res.ok){
                 addToast({
@@ -25,9 +26,13 @@ const PauseButton = ({row, onUpdate}: AgentButtonProps) => {
                     message: 'Can\'t pause'
                 })
             }
-            const updateAgent = await res.json()
-            if(onUpdate){
-                onUpdate(updateAgent)
+            addToast({
+                type: "success",
+                title: 'Agent ' + action,
+                message: 'Successfully ' + action
+            })
+            if (fetchAgents) {
+                fetchAgents();
             }
         }catch (err){
             addToast({
@@ -35,6 +40,7 @@ const PauseButton = ({row, onUpdate}: AgentButtonProps) => {
                 title: 'Pause error',
                 message: err instanceof Error ? err.message : 'Unknown error'
             })
+            console.error(err)
         }finally {
             setLoading(false)
         }

@@ -4,14 +4,14 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styled, {keyframes} from 'styled-components';
 import Image from 'next/image';
 import {AgentAll} from "@/lib/types";
-import {bgColor, bgHoverColor, blackColor, primaryColor, whiteColor} from "@/styles/colors";
+import {bgColor, blackColor, whiteColor} from "@/styles/colors";
 import {useUI} from "@/components/UI/UIProvider";
 import React from "react";
-import Modal from "@/components/UI/Modal";
 import useConfirm from "@/components/UI/UseConfirm";
-import Dropdown from "@/components/UI/Dropdown";
 import EditAgentModal from "@/components/Agents/EditAgentModal";
 import ShowConnections from "@/components/Agents/ShowConnections";
+import ShowFilters from "@/components/Agents/ShowFilters";
+import ShowTunnels from "@/components/Agents/ShowTunnels";
 
 const slideDown = keyframes`
   from {
@@ -89,10 +89,11 @@ interface Action {
 
 interface OptionsButtonProps {
     row: AgentAll;
+    fetchAgents: ()=>void
     actions?: Action[];
 }
 
-export default function OptionsButton({ row, actions }: OptionsButtonProps) {
+export default function OptionsButton({ row, actions,fetchAgents }: OptionsButtonProps) {
     const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast, openModal, closeModal} = useUI();
     const confirm = useConfirm();
@@ -121,13 +122,13 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
 
 
     function fillFormEditAgent(){
-        openModal(<EditAgentModal row={row} onClose={closeModal} />, 'Edit Agent')
+        openModal(<EditAgentModal row={row} onClose={closeModal} onSuccess={fetchAgents} />, 'Edit Agent')
     }
     function showConnections(){
         openModal(<ShowConnections row={row} onClose={closeModal} />, 'Remote connections')
     }
     function showFilters(){
-        alert('ger')
+        openModal(<ShowFilters row={row} onClose={closeModal} />, 'Remote filters')
     }
     async function cleanFilters(){
         const ok = await confirm({
@@ -161,7 +162,7 @@ export default function OptionsButton({ row, actions }: OptionsButtonProps) {
         }
     }
     function showTunnels(){
-        alert('ger')
+        openModal(<ShowTunnels row={row} onClose={closeModal} />, 'Show Tunnels')
     }
     function showCounters(){
         alert('ger')

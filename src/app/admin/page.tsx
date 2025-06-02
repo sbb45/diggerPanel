@@ -83,7 +83,7 @@ export default function Page() {
                     <br/>
                     ({item.Type})
                 </>),
-                Connected: item.Connected,
+                Connected: new Date(item.Connected).toLocaleString(),
             }))
             setData(format)
         } catch (err) {
@@ -123,7 +123,7 @@ export default function Page() {
                     ({item.Type})
                 </>
             ),
-            Connected: item.Connected,
+            Connected: new Date(item.Connected).toLocaleString(),
         }))
         setData(format)
     }, []);
@@ -165,8 +165,8 @@ export default function Page() {
     const buttons = (row: AgentAll) => (
         <TableActions>
             <SyncButton row={row} />
-            <PauseButton row={row} />
-            <OptionsButton row={row} />
+            <PauseButton fetchAgents={fetchAgents} row={row} />
+            <OptionsButton row={row} fetchAgents={fetchAgents} />
         </TableActions>
     )
 

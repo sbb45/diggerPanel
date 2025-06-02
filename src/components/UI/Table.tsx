@@ -1,25 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {bgColor, grayColor, successColor} from "@/styles/colors";
-import Image from "next/image";
-import Modal from "@/components/UI/Modal";
-import {useUI} from "@/components/UI/UIProvider";
-import {AgentAll} from "@/lib/types";
 
 
 type Column = {
     key: string;
     label: string;
 };
-type TableProps = {
+
+type TableProps<T> = {
     columns: Column[];
-    data: AgentAll[];
-    buttons: (row: AgentAll) => React.ReactNode;
+    data: T[];
+    buttons: (row: T) => React.ReactNode;
+    style?: React.CSSProperties;
 };
+
 
 const TableWrapper = styled.table`
     width: 90%;
     margin:  0 auto;
+    overflow: hidden;
 `
 const TableHeader = styled.thead`
     position: relative;
@@ -48,11 +48,11 @@ const TableBody = styled.tbody`
             border-radius: 10px;
         }
     }
-
     td {
         position: relative;
         z-index: 3;
         padding: 0 12px;
+
         height: 80px;
         font-size: 16px;
         &:first-child::before {
@@ -60,10 +60,10 @@ const TableBody = styled.tbody`
             position: absolute;
             top: 0;
             left: -2vw;
-            width: 77vw;
+            width: 100vw;
             height: 100%;
             background-color: transparent;
-            z-index: 1;
+            z-index: -10;
             transition: background-color 0.3s ease;
         }
 
@@ -87,27 +87,31 @@ const TableBody = styled.tbody`
 `;
 
 
-const Table = ({columns, data, buttons}: TableProps) => {
+function Table<T>({ columns, data, buttons, style }: TableProps<T>) {
     return (
-        <TableWrapper>
+        <TableWrapper style={style}>
             <TableHeader>
                 <tr>
-                    {columns.map((col)=>(
-                        <th key={col.key}>{col.label}</th>
+                    {columns.map((col) => (
+                        <th key={String(col.key)}>{col.label}</th>
                     ))}
                 </tr>
             </TableHeader>
             <TableBody>
-                {data.map((row, i)=>(
+                {data.map((row, i) => (
                     <tr key={i}>
                         {columns.map((col) => (
-                            <td key={col.key}>
+                            <td key={String(col.key)}>
                                 {col.key === "actions" ? (
-                                    buttons(row.Item as AgentAll)
-                                ) : typeof row[col.key] === "boolean" ? (
-                                    row[col.key] ? <span className="online"></span> : <span className="offline"></span>
-                                ): (
-                                    <>{row[col.key]}</>
+                                    buttons(row)
+                                ) : typeof row[col.key as keyof T] === "boolean" && col.key === "Online" ? (
+                                    row[col.key as keyof T] ? (
+                                        <span className="online" />
+                                    ) : (
+                                        <span className="offline" />
+                                    )
+                                ) : (
+                                    <>{row[col.key as keyof T] as React.ReactNode}</>
                                 )}
                             </td>
                         ))}
@@ -116,6 +120,6 @@ const Table = ({columns, data, buttons}: TableProps) => {
             </TableBody>
         </TableWrapper>
     );
-};
+}
 
 export default Table;

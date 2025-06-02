@@ -17,5 +17,18 @@ export type AgentAll = {
 }
 export interface AgentButtonProps {
     row: AgentAll;
+    fetchAgents?: ()=>void;
     onUpdate?: (updatedAgent: AgentAll) => void;
+}
+
+export type Pools = {
+    Id: number;
+    Note: string;
+    Address: string;
+    Username: string;
+    Password: string;
+    Worker: string;
+    FilterKeys?: Record<string, string[]>;
+    Updated: string;
+    State: boolean
 }

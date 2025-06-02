@@ -6,7 +6,8 @@ import {useUI} from "@/components/UI/UIProvider";
 
 type EditAgentModalProps ={
     row: AgentAll,
-    onClose: ()=>void
+    onClose: ()=>void,
+    onSuccess: () => void;
 }
 
 const stateOptions = [
@@ -21,7 +22,7 @@ const modeOptions = [
     {value: "4", label:"FeeBlockAndStaticPercent"},
 ]
 
-const EditAgentModal = ({row, onClose}:EditAgentModalProps) => {
+const EditAgentModal = ({row, onClose, onSuccess }:EditAgentModalProps) => {
     const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast,closeModal} = useUI();
     const [state, setState] = useState(
@@ -60,6 +61,7 @@ const EditAgentModal = ({row, onClose}:EditAgentModalProps) => {
                 title:'Successfully modified',
                 message:'The agent has been successfully modified'
             })
+            onSuccess()
         }catch (err){
             addToast({
                 type:'danger',

@@ -26,9 +26,9 @@ const ContentWrapper = styled(motion.div)`
     top: 50%;
     bottom: 50%;
     right: 50%;
-    left: 50%;  
+    left: 50%;
     min-width: 510px;
-    max-width: 800px;
+    max-width: 90vw;
     width: max-content;
     height: max-content;
     min-height: 280px;
@@ -42,6 +42,8 @@ const ContentWrapper = styled(motion.div)`
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
     div.modal{
         display: flex;
         justify-content: start;
