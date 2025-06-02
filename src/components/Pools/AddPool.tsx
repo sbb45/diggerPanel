@@ -1,40 +1,36 @@
 import React, { useState } from "react";
 import Input from "@/components/UI/Input";
-import { Pools } from "@/lib/types";
 import { useUI } from "@/components/UI/UIProvider";
 
 type Props = {
-    row: Pools;
     onClose: ()=>void;
     onSuccess: () => void;
 };
 
-const EditPoolModal = ({ row, onSuccess, onClose }: Props) => {
+const AddPool = ({ onSuccess, onClose }: Props) => {
     const { closeModal, addToast } = useUI();
     const api = process.env.NEXT_PUBLIC_API_BASE
 
-    const [note, setNote] = useState(row.Note);
-    const [address, setAddress] = useState(row.Address);
-    const [username, setUsername] = useState(row.Username);
-    const [worker, setWorker] = useState(row.Worker);
-    const [password, setPassword] = useState(row.Password ?? '');
+    const [note, setNote] = useState('');
+    const [address, setAddress] = useState('');
+    const [username, setUsername] = useState('');
+    const [worker, setWorker] = useState('');
+    const [password, setPassword] = useState('');
 
     async function savePool() {
         try {
-            const fullItem = {
-                ...row,
+            const item = {
                 Note: note,
                 Address: address,
                 Username: username,
                 Worker: worker,
                 Password: password,
-            };
-
-            const res = await fetch(`${api}/api/v1/pools/${row.Id}`, {
+            }
+            const res = await fetch(`${api}/api/v1/pools`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify(fullItem),
+                body: JSON.stringify(item)
             });
 
             if (!res.ok) throw new Error(await res.text());
@@ -63,10 +59,10 @@ const EditPoolModal = ({ row, onSuccess, onClose }: Props) => {
             </div>
             <div className="btns">
                 <button onClick={onClose} className="cancel">Cancel</button>
-                <button onClick={savePool} className="success">Save</button>
+                <button onClick={savePool} className="success">Create</button>
             </div>
         </div>
     );
 };
 
-export default EditPoolModal;
+export default AddPool;

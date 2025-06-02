@@ -18,6 +18,7 @@ import EditButton from "@/components/Pools/EditPoolModal";
 import Image from "next/image";
 import EditAgentModal from "@/components/Agents/EditAgentModal";
 import EditPoolModal from "@/components/Pools/EditPoolModal";
+import AddPool from "@/components/Pools/AddPool";
 
 type PoolRow = Pools & {
     Used: 'used' | 'unused';
@@ -30,7 +31,7 @@ const columns = [
     {key: "Username", label: "Username"},
     {key: "Worker", label: "Worker"},
     {key: "Used", label: "Used"},
-    {key: "Updated", label: "Updated"},
+    {key: "UpdatedTime", label: "Updated"},
     {key: "actions", label: ""},
 ];
 
@@ -64,7 +65,7 @@ export default function Page() {
             const format = pools.map((item):Pools => ({
                 ...item,
                 Used: item.FilterKeys ? "used" : 'unused',
-                Updated: new Date(item.Updated).toLocaleString(),
+                UpdatedTime: new Date(item.Updated).toLocaleString(),
             }))
             setData(format)
         } catch (err) {
@@ -87,7 +88,7 @@ export default function Page() {
         const format = PoolsLocal.map((item) => ({
             ...item,
             Used: item.FilterKeys ? "used" : 'unused',
-            Updated: new Date(item.Updated).toLocaleString(),
+            UpdatedTime: new Date(item.Updated).toLocaleString(),
         }))
         setData(format)
     }, []);
@@ -179,6 +180,7 @@ export default function Page() {
                     <FunctionBtn onClick={fetchPools} title={'Refresh'} image={'refresh.svg'}/>
                     <FunctionBtn onClick={sync} title={'Sync'} image={'sync.svg'}/>
                     <FunctionBtn onClick={backupAction} title={'Backup'} image={'download.svg'}/>
+                    <FunctionBtn onClick={() => openModal(<AddPool onClose={closeModal} onSuccess={fetchPools} />, 'Create Pool')} title={'Create Pool'} image={'plus.svg'} primary={true}/>
                 </span>
             </ListManagement>
             {loading ? (
