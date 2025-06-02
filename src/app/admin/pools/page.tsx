@@ -135,39 +135,6 @@ export default function Page() {
         </TableActions>
     )
 
-
-    // Общие активности
-    async function backupAction() {
-        try {
-            window.open(api + '/api/v1/agents/export', '_blank')
-        } catch (err) {
-            addToast({
-                type: 'danger',
-                title: 'Backup error',
-                message: err instanceof Error ? err.message : 'Unknown error'
-            })
-            console.error("Backup error", err)
-        }
-    }
-    async function sync() {
-        try {
-            const res = await fetch(api + '/api/v1/agents/sync');
-            if (!res.ok) throw new Error(`Sync failed: ${res.statusText}`);
-            addToast({
-                type: 'success',
-                title: 'Sync successful',
-                message: 'Agents synchronized successfully'
-            })
-        } catch (err) {
-            console.error(err);
-            addToast({
-                type: 'danger',
-                title: 'Sync error',
-                message: err instanceof Error ? err.message : 'Unknown error'
-            })
-        }
-    }
-
     return (
         <ClientAdminLayout>
             <AdminStatistic statistic={statistic}/>
@@ -178,8 +145,6 @@ export default function Page() {
                 </span>
                 <span>
                     <FunctionBtn onClick={fetchPools} title={'Refresh'} image={'refresh.svg'}/>
-                    <FunctionBtn onClick={sync} title={'Sync'} image={'sync.svg'}/>
-                    <FunctionBtn onClick={backupAction} title={'Backup'} image={'download.svg'}/>
                     <FunctionBtn onClick={() => openModal(<AddPool onClose={closeModal} onSuccess={fetchPools} />, 'Create Pool')} title={'Create Pool'} image={'plus.svg'} primary={true}/>
                 </span>
             </ListManagement>

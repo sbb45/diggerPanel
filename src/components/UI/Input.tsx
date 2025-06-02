@@ -5,6 +5,7 @@ import {bgColor, grayColor} from "@/styles/colors";
 type InputProps = {
     value: string;
     label: string;
+    type?: string;
     onChange: (value: string) => void;
 };
 
@@ -28,12 +29,12 @@ const InputBlock = styled.input`
     min-height: 44px;
 `
 
-const Input = ({ value, label, onChange }: InputProps) => {
+const Input = ({ value, label, onChange,type }: InputProps) => {
     return (
         <InputWrapper>
             <h4>{label}</h4>
             <InputBlock
-                type="text"
+                type={type ? type : 'text'}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
             />

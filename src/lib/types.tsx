@@ -13,7 +13,9 @@ export type Agent = {
     Connected: string;
 };
 export type AgentAll = {
-    [key: string]: string | number | boolean | object | null | React.ReactNode | undefined
+    [key: string]: string | number | boolean | object | null | React.ReactNode | undefined,
+    Users?: number[];
+    Id: number;
 }
 export interface AgentButtonProps {
     row: AgentAll;
@@ -31,4 +33,35 @@ export type Pools = {
     FilterKeys?: Record<string, string[]>;
     Updated: string;
     State: boolean
+}
+
+export interface Referral {
+    Type: string;
+    Percent: number;
+    Address: string;
+    Login: string;
+    Password: string;
+}
+
+export interface UserPool {
+    Address: string;
+    Login: string;
+    Password: string;
+    Type: string;
+}
+export interface User {
+    Id: number;
+    Source?: string;
+    Note: string;
+    Login: string;
+    Password: string;
+    Ratio: number;
+    Agents?: string[];
+    Referrals?: Referral[];
+    Pools?: UserPool[];
+    Updated: string;
+    WorkerAsIP?: boolean;
+    PersistentDevPercent?: number;
+    IgnoreExclusions?: boolean;
+    HideDevHash?: boolean;
 }

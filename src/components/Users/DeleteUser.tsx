@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import Image from "next/image";
 import {TableBtn} from "@/app/admin/page.styled";
-import {Pools} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
+import {User} from "@/lib/types";
 
-type SwitchButtonProps ={
-    row: Pools,
-    fetchPools: ()=>void
+type DeleteButtonProps ={
+    row: User,
+    fetchUsers: ()=>void
 }
 
-const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
+const DeleteUser = ({row, fetchUsers}: DeleteButtonProps) => {
     const [loading, setLoading] = useState(false)
     const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast} = useUI();
@@ -17,7 +17,7 @@ const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
     async function switchPoolsAction(){
         setLoading(true)
         try {
-            const res = await fetch(`${api}/api/v1/pools/${row.Id}`,{
+            const res = await fetch(`${api}/api/v1/users/${row.Id}`,{
                 method:'DELETE',
                 credentials: 'include'
             })
@@ -28,7 +28,7 @@ const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
                 message: 'Pool successfully deleted',
             })
 
-            fetchPools()
+            fetchUsers()
         }catch (err){
             addToast({
                 type: "danger",
@@ -47,4 +47,4 @@ const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
     );
 };
 
-export default DeleteButton;
+export default DeleteUser;
