@@ -7,6 +7,8 @@ import {blackColor, primaryColor, whiteColor} from "@/styles/colors";
 import {usePathname} from "next/navigation";
 import {useUI} from "@/components/UI/UIProvider";
 import AdminOptions from "@/components/Admin/AdminOptions";
+import {api} from "@/lib/const";
+import {router} from "next/client";
 
 
 const MenuLogo = styled.div`
@@ -97,38 +99,36 @@ const MenuSubLinks = styled.div<{ $isOpen: boolean }>`
 
 const AdminMenu = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const {openModal, closeModal} = useUI();
+    const {openModal, closeModal,addToast} = useUI();
     const pathname = usePathname();
 
-    // Функция очистки логов
     const cleanLogs = async () => {
         try {
-            const res = await fetch('/api/v1/logs', {
+            const res = await fetch(`${api}/api/v1/logs`, {
                 method: 'DELETE',
                 credentials: 'include',
             });
+            if (!res.ok) throw new Error(await res.text());
+            addToast({ type: "success",title:"Logs cleaned", message: "Logs cleaned successfully" });
 
-            if (res.status === 401) {
-                window.location.replace("/");
-                return;
-            }
-
-            if (res.status !== 204) {
-                const text = await res.text();
-                alert(`Error: ${res.statusText}: ${text}`);
-            } else {
-                alert(`Logs cleaned`);
-            }
-        } catch {
-            alert('Network error or offline');
+        } catch (err){
+            addToast({ type: "danger", title:"Error logs cleaned", message: err instanceof Error ? err.message : 'Unknown error' });
         }
     };
 
     function openSettings(){
         openModal(<AdminOptions onClose={closeModal} />, "Admin Options")
     }
-    function logout(){
-
+    async function logout(){
+        try {
+            const res = await fetch(`${api}/api/v1/exit`);
+            if (!res.ok) {
+                throw new Error('Logout failed');
+            }
+            router.push('/auth');
+        } catch (err) {
+            addToast({ type: "danger", title:"Logout error", message: err instanceof Error ? err.message : 'Unknown error' });
+        }
     }
 
     const topMenu = [
@@ -137,7 +137,7 @@ const AdminMenu = () => {
         { label: "Users", path: '/admin/users', img: 'users.svg', imgActive: 'users-active.svg' },
         {
             label: "Logs", img: 'logs.svg', sub: [
-                { label: "Open logs", action: () => window.open('/api/v1/logs', '_blank') },
+                { label: "Open logs", action: () => window.open(`${api}/api/v1/logs`, '_blank') },
                 { label: "Clean logs", action: cleanLogs }
             ]
         },
@@ -202,7 +202,7 @@ const AdminMenu = () => {
             </div>
             <MenuLinks>
                 {bottomMenu.map((item, i) =>
-                    <MenuLink key={i}>
+                    <MenuLink key={i} onClick={item.action}>
                         <div>
                             <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label}></Image>
                             <p>{item.label}</p>

@@ -3,15 +3,13 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styled, {keyframes} from 'styled-components';
 import Image from 'next/image';
-import {AgentAll, User} from "@/lib/types";
+import {User} from "@/lib/types";
 import {bgColor, blackColor, whiteColor} from "@/styles/colors";
 import {useUI} from "@/components/UI/UIProvider";
 import React from "react";
-import useConfirm from "@/components/UI/UseConfirm";
 import FillFormEditUser from "@/components/Users/fillFormEditUser";
 import AgentList from "@/components/Users/AgentList";
 import ListPools from "@/components/Users/Pools/ListPools";
-import ListServers from "@/components/Users/Server/ListServer";
 import ListServer from "@/components/Users/Server/ListServer";
 import ListReferrals from "@/components/Users/Referrals/ListReferrals";
 

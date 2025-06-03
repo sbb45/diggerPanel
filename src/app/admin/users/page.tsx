@@ -53,7 +53,7 @@ export default function UsersPage() {
         return p.toFixed(2);
     }
 
-    const fetchUsers = async () => {
+    const fetchUsers = useCallback(async () => {
         setLoading(true);
         try {
             const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
@@ -84,11 +84,11 @@ export default function UsersPage() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [addToast]);
 
     useEffect(() => {
         fetchUsers();
-    }, []);
+    }, [fetchUsers]);
 
     // Фильтрация
     const filteredUsers = users.filter(user => {

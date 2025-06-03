@@ -29,7 +29,6 @@ const AddServer = ({ userId, onClose, onSuccess }: AddServerProps) => {
             const user = allUsers.find(u => u.Id === userId);
             if (!user) throw new Error('User not found');
 
-            // Добавляем новый сервер в массив Servers (создаем, если его нет)
             const updatedServers = user.Servers ? [...user.Servers] : [];
             updatedServers.push({ Name: name, Addr: addr });
 

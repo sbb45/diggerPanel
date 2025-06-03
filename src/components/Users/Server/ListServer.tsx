@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { User } from '@/lib/types';
 import { useUI } from '@/components/UI/UIProvider';
 import Table from '@/components/UI/Table';
@@ -29,8 +29,7 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
     const { addToast, openModal, closeModal } = useUI();
     const [servers, setServers] = useState<Server[]>([]);
 
-    // Получаем всех пользователей и находим нужного, чтобы получить servers
-    const fetchServers = async () => {
+    const fetchServers = useCallback(async () => {
         try {
             const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
@@ -49,11 +48,11 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
                 message: err instanceof Error ? err.message : 'Unknown error',
             });
         }
-    };
+    }, [userId, addToast]);
 
     useEffect(() => {
         fetchServers();
-    }, [userId]);
+    }, [fetchServers]);
 
     // Удаление сервера — обновляем список и отправляем обновлённого пользователя
     const deleteServer = async (index: number) => {
@@ -93,13 +92,17 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
         }
     };
 
-    const buttons = (_: Server, index: number) => (
-        <TableActions>
-            <TableBtn title="Delete server" onClick={() => deleteServer(index)}>
-                <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
-            </TableBtn>
-        </TableActions>
-    );
+    const buttons = (server: Server) => {
+        const index = servers.findIndex(s => s === server);
+        return (
+            <TableActions>
+                <TableBtn title="Delete server" onClick={() => deleteServer(index)}>
+                    <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
+                </TableBtn>
+            </TableActions>
+        );
+    };
+
 
     const handleAddServer = () => {
         openModal(

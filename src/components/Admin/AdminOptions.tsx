@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Input from "@/components/UI/Input";
 import { useUI } from "@/components/UI/UIProvider";
-import Dropdown from "@/components/UI/Dropdown";
+import {api} from "@/lib/const";
 
 type ConfigType = {
     TypeLog: string;
@@ -19,6 +19,16 @@ type Props ={
     onClose: ()=>void
 }
 
+const numberFields: (keyof ConfigType)[] = [
+    "CommandTimeoutSec",
+    "StaleLiveMin",
+    "MaxUserExclusionCount",
+    "CountersTimeoutHours",
+    "AutoSyncConnectionCount",
+    "IntervalSyncConnections",
+    "IntervalSyncStatistics",
+    "IntervalSyncRates",
+];
 
 const AdminOptions = ({onClose }:Props ) => {
     const {addToast } = useUI();
@@ -27,7 +37,9 @@ const AdminOptions = ({onClose }:Props ) => {
     useEffect(() => {
         async function fetchConfig() {
             try {
-                const res = await fetch(`/api/v1/config`);
+                const res = await fetch(`${api}/api/v1/config`,{
+                    credentials: 'include',
+                });
                 if (!res.ok) throw new Error( await res.text());
                 const data = await res.json();
                 setConfig(data);
@@ -39,17 +51,33 @@ const AdminOptions = ({onClose }:Props ) => {
     }, [addToast]);
 
     const setField = (field: keyof ConfigType, value: string) => {
-        setConfig(prev => prev ? { ...prev, [field]: value } : prev);
+        setConfig(prev => {
+            if (!prev) return prev;
+            if (numberFields.includes(field)) {
+                return { ...prev, [field]: Number(value) };
+            }
+            if (field === "CustomFirmwares") {
+                try {
+                    return { ...prev, CustomFirmwares: JSON.parse(value) };
+                } catch {
+                    return prev;
+                }
+            }
+
+            return { ...prev, [field]: value };
+        });
     };
 
     const saveConfig = async () => {
         try {
-            const res = await fetch(`/api/v1/config`, {
+            const res = await fetch(`${api}/api/v1/config`, {
                 method: "PUT",
+                credentials: 'include',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(config),
             });
-            if (!res.ok) throw new Error("Failed to save config");
+            console.log(res)
+            if (!res.ok) throw new Error(await res.text());
             addToast({ type: "success",title:"Config save", message: "Config saved successfully" });
         } catch (err) {
             addToast({ type: "danger", title:"Error save config", message: err instanceof Error ? err.message : 'Unknown error' });
@@ -72,7 +100,7 @@ const AdminOptions = ({onClose }:Props ) => {
                     <Input label="IntervalSyncConnections" value={config?.IntervalSyncConnections ?? ""} onChange={val => setField("IntervalSyncConnections", val)} />
                     <Input label="IntervalSyncStatistics" value={config?.IntervalSyncStatistics ?? ""} onChange={val => setField("IntervalSyncStatistics", val)} />
                     <Input label="IntervalSyncRates" value={config?.IntervalSyncRates ?? ""} onChange={val => setField("IntervalSyncRates", val)} />
-                    <Input label="Counters" value={config?.CountersTimeoutHours ?? ""} onChange={val => setField("CountersTimeoutHours", val)} />
+                    <Input label="CustomFirmwares" value={JSON.stringify(config?.CustomFirmwares) ?? ""} onChange={val => setField("CustomFirmwares", val)} />
                 </span>
             </div>
             <div className="btns">

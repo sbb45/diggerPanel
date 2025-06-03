@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import AddReferral from "@/components/Users/Referrals/AddReferral"
 import { useUI } from '@/components/UI/UIProvider';
 import Table from '@/components/UI/Table';
@@ -9,7 +9,7 @@ import {User} from "@/lib/types";
 import {api} from "@/lib/const";
 
 type Referral = {
-    Id: number;
+    Id?: number;
     Address: string;
     Login: string;
     Password: string;
@@ -29,12 +29,14 @@ const columns = [
     { key: 'actions', label: '' },
 ];
 
+
+
 export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
     const userId = row.Id
     const { addToast, openModal, closeModal } = useUI();
     const [referrals, setReferrals] = useState<Referral[]>([]);
 
-    const fetchUsers = async () => {
+    const fetchUsers = useCallback(async () => {
         try {
             const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
@@ -54,12 +56,12 @@ export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
                 message: err instanceof Error ? err.message : 'Unknown error',
             });
         }
-    };
+    }, [userId, addToast]);
 
 
     useEffect(() => {
         fetchUsers();
-    }, [userId]);
+    }, [fetchUsers]);
 
     const deleteReferral = async (targetReferral: { Address: string; Login: string; Percent: number }) => {
         try {

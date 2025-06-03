@@ -47,38 +47,36 @@ export default function Page() {
     const [filterUsedValue, setFilterUsedValue] = useState(filterOnline[0])
 
 
-    const fetchPools = async () => {
-        setLoading(true)
+    const fetchPools = useCallback(async () => {
+        setLoading(true);
         try {
-            const res = await fetch(api + '/api/v1/pools', {
-                credentials: 'include',
-            })
+            const res = await fetch(api + '/api/v1/pools', { credentials: 'include' });
             if (!res.ok) {
                 throw new Error(`Server Error: ${await res.text()}`);
             }
             const pools: Pools[] = await res.json();
-
-            const format = pools.map((item):PoolRow => ({
+            const format = pools.map((item): PoolRow => ({
                 ...item,
                 Used: item.FilterKeys ? "used" : 'unused',
                 UpdatedTime: new Date(item.Updated).toLocaleString(),
-            }))
-            setData(format)
+            }));
+            setData(format);
         } catch (err) {
             addToast({
                 type: "danger",
                 title: 'Loading error',
                 message: err instanceof Error ? err.message : 'Unknown error'
-            })
-            console.error('Error when loading pools:', err)
+            });
+            console.error('Error when loading pools:', err);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    };
+    }, [addToast]);
 
     useEffect(() => {
-        fetchPools()
-    }, []);
+        fetchPools();
+    }, [fetchPools]);
+
 
     const statistic = {
         total: {count: data.length, text: 'Total Pools'},
@@ -107,7 +105,7 @@ export default function Page() {
 
     const handleClearFilters = useCallback(() => {
         setFilterUsedValue(filterOnline[0]);
-    }, [filterOnline]);
+    }, []);
 
     // Управление Пулом
     const buttons = (row: Pools) => (

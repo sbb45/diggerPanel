@@ -26,7 +26,9 @@ export interface AgentButtonProps {
 export type Pools = {
     Id: number;
     Note: string;
+    Login: string;
     Address: string;
+    Type: string;
     Username: string;
     Password: string;
     Worker: string;
@@ -49,6 +51,11 @@ export interface UserPool {
     Password: string;
     Type: string;
 }
+
+export interface ServerType {
+    Name: string;
+    Addr: string;
+}
 export interface User {
     Id: number;
     Source?: string;
@@ -64,4 +71,5 @@ export interface User {
     PersistentDevPercent?: number;
     IgnoreExclusions?: boolean;
     HideDevHash?: boolean;
+    Servers?: ServerType[];
 }

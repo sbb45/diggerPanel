@@ -34,7 +34,7 @@ const WorkerStatisticsModal = ({ agentId, username }: Props) => {
     };
 
     fetchStats();
-  }, [agentId, username]);
+  }, [agentId, username, addToast, closeModal]);
 
   return (
     <div style={{ padding: '20px', width: '600px' }}>

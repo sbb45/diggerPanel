@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {AgentAll} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
@@ -101,7 +101,7 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
     );
 
 
-    const fetchConnections = async () => {
+    const fetchConnections = useCallback(async () => {
         try {
             const res = await fetch(`${api}/api/v1/agents/${row.Id}/remote/connections`, {
                 credentials: 'include'
@@ -140,10 +140,10 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
             });
             onClose()
         }
-    };
+    }, [addToast, onClose, row.Id]);
     useEffect(() => {
         fetchConnections();
-    }, []);
+    }, [fetchConnections]);
 
     async function closeConnection(agentId: number, key: string) {
         try{

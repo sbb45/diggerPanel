@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { AgentAll, User } from "@/lib/types";
 import { useUI } from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
@@ -45,7 +45,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
         setAssignedAgents(row.Agents ?? []);
     }, [row.Agents]);
 
-    const fetchAgents = async () => {
+    const fetchAgents = useCallback(async () => {
         setLoading(true);
         try {
             const res = await fetch(api + '/api/v1/agents', {
@@ -89,7 +89,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [addToast]);
 
     const assignAgent = async (agentId: string, agentSerial: string) => {
         try {
@@ -137,7 +137,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
 
     useEffect(() => {
         fetchAgents();
-    }, [userId]);
+    }, [fetchAgents]);
 
     const buttons = (agent: FormattedAgent) => {
         const assigned = assignedAgents.includes(agent.Serial);

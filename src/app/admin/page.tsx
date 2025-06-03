@@ -53,7 +53,7 @@ export default function Page() {
     const [filterGroupValue, setFilterGroupValue] = useState(filterGroup[0])
 
 
-    const fetchAgents = async () => {
+    const fetchAgents = useCallback(async () => {
         setLoading(true)
         try {
             const res = await fetch(api + '/api/v1/agents', {
@@ -106,11 +106,11 @@ export default function Page() {
         } finally {
             setLoading(false)
         }
-    };
+    }, [addToast]);
 
     useEffect(() => {
         fetchAgents()
-    }, []);
+    }, [fetchAgents]);
 
     const statistic = {
         total: {count: data.length, text: 'Total Agents'},
@@ -141,7 +141,7 @@ export default function Page() {
     const handleClearFilters = useCallback(() => {
         setFilterOnlineValue(filterOnline[0]);
         setFilterGroupValue(filterGroup[0]);
-    }, [filterOnline, filterGroup]);
+    }, [filterGroup]);
 
     // Управление Агентом
     const buttons = (row: AgentAll) => (

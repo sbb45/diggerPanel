@@ -23,30 +23,24 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
     const savePool = async () => {
         setLoading(true);
         try {
-            // Получаем всех пользователей
             const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!resUsers.ok) throw new Error(await resUsers.text());
             const allUsers: User[] = await resUsers.json();
 
-            // Находим нужного пользователя
             const user = allUsers.find(u => u.Id === userId);
             if (!user) throw new Error('User not found');
 
-            // Создаём новый пул
-            const newPool: Pools = {
+            const newPool: Partial<Pools> = {
                 Address: address,
                 Login: login,
                 Password: password,
                 Type: type,
             };
 
-            // Добавляем в существующий массив пулов или создаём новый
             const updatedPools = user.Pools ? [...user.Pools, newPool] : [newPool];
 
-            // Обновляем пользователя с новым списком пулов
             const updatedUser = { ...user, Pools: updatedPools };
 
-            // Отправляем обновленного пользователя на сервер
             const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

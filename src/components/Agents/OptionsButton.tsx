@@ -10,8 +10,6 @@ import React from "react";
 import useConfirm from "@/components/UI/UseConfirm";
 import EditAgentModal from "@/components/Agents/EditAgentModal";
 import ShowConnections from "@/components/Agents/ShowConnections";
-import ShowFilters from "@/components/Agents/ShowFilters";
-import ShowTunnels from "@/components/Agents/ShowTunnels";
 import {api} from "@/lib/const";
 
 const slideDown = keyframes`
@@ -128,7 +126,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         openModal(<ShowConnections row={row} onClose={closeModal} />, 'Remote connections')
     }
     function showFilters(){
-        openModal(<ShowFilters row={row} onClose={closeModal} />, 'Remote filters')
+        // openModal(<ShowFilters row={row} onClose={closeModal} />, 'Remote filters')
     }
     async function cleanFilters(){
         const ok = await confirm({
@@ -162,7 +160,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         }
     }
     function showTunnels(){
-        openModal(<ShowTunnels row={row} onClose={closeModal} />, 'Show Tunnels')
+        // openModal(<ShowTunnels row={row} onClose={closeModal} />, 'Show Tunnels')
     }
     function showCounters(){
         alert('ger')

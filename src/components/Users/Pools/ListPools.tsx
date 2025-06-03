@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Pools, User} from '@/lib/types';
 import { useUI } from '@/components/UI/UIProvider';
 import Table from '@/components/UI/Table';
@@ -26,7 +26,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
     const { addToast, openModal, closeModal } = useUI();
     const [pools, setPools] = useState<Pools[]>([]);
 
-    const fetchPools = async () => {
+    const fetchPools = useCallback(async () => {
         try {
             const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
@@ -38,7 +38,21 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
                 return;
             }
 
-            setPools(user.Pools || []);
+            const mappedPools: Pools[] = (user.Pools || []).map((pool, index) => ({
+                Id: index,
+                Note: '',
+                Login: pool.Login,
+                Address: pool.Address,
+                Type: pool.Type,
+                Username: pool.Login,
+                Password: pool.Password,
+                Worker: '',
+                FilterKeys: undefined,
+                Updated: new Date().toISOString(),
+                State: false
+            }));
+
+            setPools(mappedPools);
         } catch (err) {
             addToast({
                 type: 'danger',
@@ -46,11 +60,11 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
                 message: err instanceof Error ? err.message : 'Unknown error',
             });
         }
-    };
+    }, [userId, addToast]);
 
     useEffect(() => {
         fetchPools();
-    }, [userId]);
+    }, [fetchPools]);
 
     const handleAddPool = () => {
         openModal(
