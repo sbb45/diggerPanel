@@ -28,10 +28,17 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
 
     const fetchPools = async () => {
         try {
-            const res = await fetch(`${api}/api/v1/users/${userId}/pools`, { credentials: 'include' });
+            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
-            const data = await res.json();
-            setPools(data);
+            const allUsers: User[] = await res.json();
+
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) {
+                setPools([]);
+                return;
+            }
+
+            setPools(user.Pools || []);
         } catch (err) {
             addToast({
                 type: 'danger',
@@ -63,16 +70,28 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
         );
     };
 
-    const deletePool = async (poolId: number) => {
-        if (!confirm('Are you sure you want to delete this pool?')) return;
-
+    const deletePool = async (index: number) => {
         try {
-            const res = await fetch(`${api}/api/v1/pools/${poolId}`, {
-                method: 'DELETE',
+            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            if (!resUsers.ok) throw new Error(await resUsers.text());
+            const allUsers: User[] = await resUsers.json();
+
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) throw new Error('User not found');
+
+            const updatedPools = [...(user.Pools || [])];
+            updatedPools.splice(index, 1);
+
+            const updatedUser = { ...user, Pools: updatedPools };
+
+            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
+                body: JSON.stringify(updatedUser),
             });
 
-            if (!res.ok) throw new Error(await res.text());
+            if (!resSave.ok) throw new Error(await resSave.text());
 
             addToast({ type: 'success', title: 'Deleted', message: 'Pool deleted successfully' });
             fetchPools();
@@ -85,6 +104,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
             });
         }
     };
+
 
 
     const buttons = (pool: Pools) => (

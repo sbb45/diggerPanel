@@ -8,10 +8,8 @@ import Image from 'next/image';
 import AddServer from "@/components/Users/Server/AddServer";
 
 type Server = {
-    Id: number;
     Name: string;
     Addr: string;
-    Online: boolean;
 };
 
 type ListServersProps = {
@@ -31,12 +29,19 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
     const { addToast, openModal, closeModal } = useUI();
     const [servers, setServers] = useState<Server[]>([]);
 
+    // Получаем всех пользователей и находим нужного, чтобы получить servers
     const fetchServers = async () => {
         try {
-            const res = await fetch(`${api}/api/v1/users/${userId}/servers`, { credentials: 'include' });
+            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
-            const data = await res.json();
-            setServers(data);
+            const allUsers: User[] = await res.json();
+
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) {
+                setServers([]);
+                return;
+            }
+            setServers(user.Servers || []);
         } catch (err) {
             addToast({
                 type: 'danger',
@@ -49,6 +54,52 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
     useEffect(() => {
         fetchServers();
     }, [userId]);
+
+    // Удаление сервера — обновляем список и отправляем обновлённого пользователя
+    const deleteServer = async (index: number) => {
+        if (!confirm('Are you sure you want to delete this server?')) return;
+
+        try {
+            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            if (!resUsers.ok) throw new Error(await resUsers.text());
+            const allUsers: User[] = await resUsers.json();
+
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) throw new Error('User not found');
+
+            const updatedServers = [...(user.Servers || [])];
+            updatedServers.splice(index, 1);
+
+            const updatedUser = { ...user, Servers: updatedServers };
+
+            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify(updatedUser),
+            });
+
+            if (!resSave.ok) throw new Error(await resSave.text());
+
+            addToast({ type: 'success', title: 'Deleted', message: 'Server deleted successfully' });
+            fetchServers();
+            onSuccess();
+        } catch (err) {
+            addToast({
+                type: 'danger',
+                title: 'Delete failed',
+                message: err instanceof Error ? err.message : 'Unknown error',
+            });
+        }
+    };
+
+    const buttons = (_: Server, index: number) => (
+        <TableActions>
+            <TableBtn title="Delete server" onClick={() => deleteServer(index)}>
+                <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
+            </TableBtn>
+        </TableActions>
+    );
 
     const handleAddServer = () => {
         openModal(
@@ -67,36 +118,6 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
             'Add Server'
         );
     };
-
-    const deleteServer = async (serverId: number) => {
-        if (!confirm('Are you sure you want to delete this server?')) return;
-
-        try {
-            const res = await fetch(`${api}/api/v1/servers/${serverId}`, {
-                method: 'DELETE',
-                credentials: 'include',
-            });
-            if (!res.ok) throw new Error(await res.text());
-
-            addToast({ type: 'success', title: 'Deleted', message: 'Server deleted successfully' });
-            fetchServers();
-            onSuccess();
-        } catch (err) {
-            addToast({
-                type: 'danger',
-                title: 'Delete failed',
-                message: err instanceof Error ? err.message : 'Unknown error',
-            });
-        }
-    };
-
-    const buttons = (server: Server) => (
-        <TableActions>
-            <TableBtn title="Delete server" onClick={() => deleteServer(server.Id)}>
-                <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
-            </TableBtn>
-        </TableActions>
-    );
 
     return (
         <div className="modal">

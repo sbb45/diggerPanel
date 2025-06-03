@@ -9,8 +9,6 @@ import ClientAdminLayout from "@/components/Admin/ClientAdminLayout";
 import {useUI} from "@/components/UI/UIProvider";
 import FunctionBtn from "@/components/UI/FunctionBtn";
 import {User} from "@/lib/types";
-import AddPool from "@/components/Pools/AddPool";
-import UsersLocal from "@/app/admin/users/users.json";
 import ClearFilter from "@/components/UI/ClearFilter";
 import DeleteUser from "@/components/Users/DeleteUser";
 import OptionUser from "@/components/Users/OptionUser";
@@ -91,26 +89,6 @@ export default function UsersPage() {
     useEffect(() => {
         fetchUsers();
     }, []);
-
-    useEffect(() => {
-        const format = UsersLocal.map((item) => ({
-            ...item,
-            hiddenPassword: '***',
-            RatioCount: (
-                <>
-                    {item.Ratio}
-                    <br />
-                    {formatRatio(item.Ratio)}%
-                </>
-            ),
-            AgentsCount: item.Agents?.length ?? 0,
-            ReferralsCount: item.Referrals?.length ?? 0,
-            PoolsCount: item.Pools?.length ?? 0,
-            UpdatedTime: new Date(item.Updated).toLocaleString(),
-        }))
-        setUsers(format)
-    }, []);
-
 
     // Фильтрация
     const filteredUsers = users.filter(user => {

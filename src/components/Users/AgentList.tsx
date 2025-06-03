@@ -1,58 +1,109 @@
 'use client';
+
 import React, { useEffect, useState } from "react";
-import {AgentAll, User} from "@/lib/types";
+import { AgentAll, User } from "@/lib/types";
 import { useUI } from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
-import { TableActions, TableBtn } from "@/app/admin/page.styled";
+import { Loading, TableActions, TableBtn } from "@/app/admin/page.styled";
 import Image from "next/image";
-
-const columns = [
-    { key: "Created", label: "Created" },
-    { key: "Note", label: "Note" },
-    { key: "Serial", label: "Serial" },
-    { key: "HAddr", label: "HAddr" },
-    { key: "Version", label: "Version" },
-    { key: "actions", label: "" },
-];
 
 type Props = {
     row: User;
     onSuccess: () => void;
 };
 
+type FormattedAgent = {
+    Item: AgentAll;
+    Online: boolean;
+    Serial: string;
+    FilterGroup: string;
+    Group: React.ReactNode;
+    Address: string;
+    Version: React.ReactNode;
+    Connected: string;
+};
+
+const columns = [
+    { key: "Connected", label: "Connected" },
+    { key: "Group", label: "Group" },
+    { key: "Serial", label: "Serial" },
+    { key: "Address", label: "Address" },
+    { key: "Version", label: "Version" },
+    { key: "actions", label: "" },
+];
+
 const AgentList = ({ row, onSuccess }: Props) => {
     const api = process.env.NEXT_PUBLIC_API_BASE;
-    const userId = row.Id
+    const userId = row.Id;
     const { addToast } = useUI();
-    const [agents, setAgents] = useState<AgentAll[]>([]);
+
+    const [data, setData] = useState<FormattedAgent[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [assignedAgents, setAssignedAgents] = useState<string[]>(row.Agents ?? []);
+
+    useEffect(() => {
+        setAssignedAgents(row.Agents ?? []);
+    }, [row.Agents]);
 
     const fetchAgents = async () => {
+        setLoading(true);
         try {
-            const res = await fetch(`${api}/api/v1/agents`, { credentials: "include" });
-            if (!res.ok) throw new Error(await res.text());
-            const allAgents: AgentAll[] = await res.json();
-
-            const userAgents = allAgents.filter(agent => agent.Users?.includes(userId) || false);
-            setAgents(userAgents);
+            const res = await fetch(api + '/api/v1/agents', {
+                credentials: 'include',
+            });
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(`Ошибка сервера: ${res.status} ${errorText}`);
+            }
+            const agents: AgentAll[] = await res.json();
+            const format = agents.map((item) => ({
+                Item: item,
+                Online: Boolean(item.Online),
+                Serial: String(item.Serial),
+                FilterGroup: String(item.Group ?? ""),
+                Group: (
+                    <>
+                        {item.Note}
+                        <br />
+                        ({item.Group ?? ""})
+                    </>
+                ),
+                Address: String(item.Address ?? ""),
+                Version: (
+                    <>
+                        {item.Version ?? ""}
+                        <br />
+                        ({item.Type ?? ""})
+                    </>
+                ),
+                Connected: item.Connected ? new Date(String(item.Connected)).toLocaleString() : "",
+            }));
+            setData(format);
         } catch (err) {
             addToast({
                 type: "danger",
-                title: "Loading agents failed",
-                message: err instanceof Error ? err.message : "Unknown error",
+                title: 'Loading error',
+                message: err instanceof Error ? err.message : 'Unknown error',
             });
+            console.error('Error when loading agents:', err);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const assignAgent = async (agentId: string) => {
+    const assignAgent = async (agentId: string, agentSerial: string) => {
         try {
             const res = await fetch(`${api}/api/v1/users/${userId}/agents/${agentId}`, {
                 method: "POST",
                 credentials: "include",
             });
             if (!res.ok) throw new Error(await res.text());
-            addToast({ type: "success", title: "Agent assigned", message: "" });
+            await res.json();
+
+            addToast({ type: "success", title: "Agent assigned", message: "The agent has been successfully assigned" });
+            setAssignedAgents(prev => [...prev, agentSerial]);
+            onSuccess();
             fetchAgents();
-            onSuccess()
         } catch (err) {
             addToast({
                 type: "danger",
@@ -62,16 +113,19 @@ const AgentList = ({ row, onSuccess }: Props) => {
         }
     };
 
-    const releaseAgent = async (agentId: string) => {
+    const releaseAgent = async (agentId: string, agentSerial: string) => {
         try {
             const res = await fetch(`${api}/api/v1/users/${userId}/agents/${agentId}`, {
                 method: "DELETE",
                 credentials: "include",
             });
             if (!res.ok) throw new Error(await res.text());
-            addToast({ type: "success", title: "Agent released", message: "" });
+            await res.json();
+
+            addToast({ type: "success", title: "Agent released", message: 'The agent was successfully released' });
+            setAssignedAgents(prev => prev.filter(serial => serial !== agentSerial));
+            onSuccess();
             fetchAgents();
-            onSuccess()
         } catch (err) {
             addToast({
                 type: "danger",
@@ -85,17 +139,26 @@ const AgentList = ({ row, onSuccess }: Props) => {
         fetchAgents();
     }, [userId]);
 
-    const buttons = (agent: AgentAll) => {
-        const assigned = agent.Users?.includes(userId);
+    const buttons = (agent: FormattedAgent) => {
+        const assigned = assignedAgents.includes(agent.Serial);
 
         return (
             <TableActions>
                 <TableBtn
                     className={assigned ? "red" : "green"}
-                    onClick={() => (assigned ? releaseAgent(String(agent.Id)) : assignAgent(String(agent.Id)))}
+                    onClick={() =>
+                        assigned
+                            ? releaseAgent(String(agent.Item.Id), agent.Serial)
+                            : assignAgent(String(agent.Item.Id), agent.Serial)
+                    }
                     title={assigned ? "Release Agent" : "Assign Agent"}
                 >
-                    <Image src={`/icons/${assigned ? "close" : "plus"}.svg`} alt={assigned ? "release" : "assign"} width={28} height={28} />
+                    <Image
+                        src={`/icons/${assigned ? "close" : "plusBlack"}.svg`}
+                        alt={assigned ? "release" : "assign"}
+                        width={28}
+                        height={28}
+                    />
                 </TableBtn>
             </TableActions>
         );
@@ -103,8 +166,12 @@ const AgentList = ({ row, onSuccess }: Props) => {
 
     return (
         <div className="modal">
-            <div className="content" style={{ margin: "30px 0", width: "100%" }}>
-                <Table columns={columns} data={agents} buttons={buttons} />
+            <div className="content" style={{ margin: "30px 0", width: "1200px" }}>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <Table columns={columns} data={data} buttons={buttons} />
+                )}
             </div>
         </div>
     );

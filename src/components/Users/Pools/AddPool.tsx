@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
+import { User, Pools } from '@/lib/types';
 
 type AddPoolProps = {
     userId: number;
@@ -17,25 +18,43 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [type, setType] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const savePool = async () => {
+        setLoading(true);
         try {
-            const item = {
-                UserId: userId,
+            // Получаем всех пользователей
+            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            if (!resUsers.ok) throw new Error(await resUsers.text());
+            const allUsers: User[] = await resUsers.json();
+
+            // Находим нужного пользователя
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) throw new Error('User not found');
+
+            // Создаём новый пул
+            const newPool: Pools = {
                 Address: address,
                 Login: login,
                 Password: password,
                 Type: type,
             };
 
-            const res = await fetch(`${api}/api/v1/pools`, {
+            // Добавляем в существующий массив пулов или создаём новый
+            const updatedPools = user.Pools ? [...user.Pools, newPool] : [newPool];
+
+            // Обновляем пользователя с новым списком пулов
+            const updatedUser = { ...user, Pools: updatedPools };
+
+            // Отправляем обновленного пользователя на сервер
+            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify(item),
+                body: JSON.stringify(updatedUser),
             });
 
-            if (!res.ok) throw new Error(await res.text());
+            if (!resSave.ok) throw new Error(await resSave.text());
 
             addToast({ type: 'success', title: 'Created', message: 'Pool added successfully' });
             onSuccess();
@@ -46,6 +65,8 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
                 title: 'Create failed',
                 message: err instanceof Error ? err.message : 'Unknown error',
             });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -58,11 +79,11 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
                 <Input label="Type" value={type} onChange={setType} />
             </div>
             <div className="btns">
-                <button onClick={onClose} className="cancel">
+                <button onClick={onClose} className="cancel" disabled={loading}>
                     Cancel
                 </button>
-                <button onClick={savePool} className="success">
-                    Create
+                <button onClick={savePool} className="success" disabled={loading || !address || !login}>
+                    {loading ? 'Saving...' : 'Create'}
                 </button>
             </div>
         </div>

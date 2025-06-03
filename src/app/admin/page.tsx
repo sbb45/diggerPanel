@@ -6,7 +6,6 @@ import Dropdown from "@/components/UI/Dropdown";
 import Table from "@/components/UI/Table";
 import CopyrightAdmin from "@/components/UI/CopyrightAdmin";
 import ClientAdminLayout from "@/components/Admin/ClientAdminLayout";
-import AgentsLocal from "@/app/admin/agents.json"
 import ClearFilter from "@/components/UI/ClearFilter";
 import {useUI} from "@/components/UI/UIProvider";
 import FunctionBtn from "@/components/UI/FunctionBtn";
@@ -25,6 +24,17 @@ const columns = [
     {key: "actions", label: ""},
 ];
 
+type FormattedAgent = {
+    Item: Agent;
+    Online: boolean;
+    Serial: string;
+    FilterGroup: string;
+    Group: React.ReactNode;
+    Address: React.ReactNode;
+    Version: React.ReactNode;
+    Connected: string;
+};
+
 const filterOnline = [
     {value: 'all', label: 'All'},
     {value: 'online', label: 'Online'},
@@ -35,7 +45,7 @@ export default function Page() {
     const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(true);
     const {addToast} = useUI();
-    const [data, setData] = useState<{ Item: Agent } & Record<string, React.ReactNode>[]>([])
+    const [data, setData] = useState<FormattedAgent[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     const [filterOnlineValue, setFilterOnlineValue] = useState(filterOnline[0])
@@ -101,34 +111,6 @@ export default function Page() {
     useEffect(() => {
         fetchAgents()
     }, []);
-
-    useEffect(() => {
-        const format = AgentsLocal.map((item) => ({
-            Item: item,
-            Online: item.Online,
-            Serial: item.Serial,
-            FilterGroup: item.Group,
-            Group: (
-                <>
-                    {item.Note}
-                    <br />
-                    ({item.Group})
-                </>
-            ),
-            Address: item.Address,
-            Version: (
-                <>
-                    {item.Version}
-                    <br />
-                    ({item.Type})
-                </>
-            ),
-            Connected: new Date(item.Connected).toLocaleString(),
-        }))
-        setData(format)
-    }, []);
-
-
 
     const statistic = {
         total: {count: data.length, text: 'Total Agents'},
@@ -221,7 +203,11 @@ export default function Page() {
             {loading ? (
                 <Loading/>
             ) : (
-                <Table columns={columns} data={paginateAgents} buttons={buttons}/>
+                <Table
+                    columns={columns}
+                    data={paginateAgents.map(fa => fa.Item)}  // берем именно AgentAll[]
+                    buttons={buttons}
+                />
             )}
             {totalPages !== 1 ? (
                 <PaginateList>

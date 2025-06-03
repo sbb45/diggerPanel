@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
+import {User} from "@/lib/types";
 
 type Props = {
     userId: number;
@@ -18,45 +19,53 @@ const AddReferral = ({ userId, onClose, onSuccess }: Props) => {
     const [password, setPassword] = useState('');
     const [percent, setPercent] = useState<number | ''>('');
 
-    const saveReferral = async () => {
-        if (!address || !login || percent === '') {
-            addToast({
-                type: 'warning',
-                title: 'Validation error',
-                message: 'Address, Login and Percent are required',
-            });
-            return;
-        }
-
+    async function saveReferral() {
         try {
-            const body = {
-                UserId: userId,
-                Address: address,
-                Login: login,
-                Password: password,
-                Percent: Number(percent),
+            // Получаем текущего пользователя из API
+            const userRes = await fetch(`${api}/api/v1/users`, {credentials:'include'});
+            const users = await userRes.json();
+            const user = users.find((u: User) => u.Id === userId);
+            if (!user) throw new Error('User not found');
+
+            // Добавляем реферала к пользователю
+            const updatedUser = {
+                ...user,
+                Referrals: [...(user.Referrals || []), {
+                    Address: address,
+                    Login: login,
+                    Password: password,
+                    Percent: percent,
+                }],
             };
 
-            const res = await fetch(`${api}/api/v1/referrals`, {
+            // Отправляем обновленного пользователя на сервер
+            const res = await fetch(`${api}/api/v1/users/${userId}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify(body),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUser),
             });
 
-            if (!res.ok) throw new Error(await res.text());
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(text);
+            }
 
             addToast({ type: 'success', title: 'Created', message: 'Referral added successfully' });
             onSuccess();
             closeModal();
+            onClose();
+
         } catch (err) {
             addToast({
                 type: 'danger',
-                title: 'Save failed',
+                title: 'Creation failed',
                 message: err instanceof Error ? err.message : 'Unknown error',
             });
+            console.error(err)
         }
-    };
+    }
+
 
     return (
         <div className="modal">

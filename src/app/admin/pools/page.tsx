@@ -6,23 +6,19 @@ import Dropdown from "@/components/UI/Dropdown";
 import Table from "@/components/UI/Table";
 import CopyrightAdmin from "@/components/UI/CopyrightAdmin";
 import ClientAdminLayout from "@/components/Admin/ClientAdminLayout";
-import PoolsLocal from "@/app/admin/pools/pools.json"
 import ClearFilter from "@/components/UI/ClearFilter";
 import {useUI} from "@/components/UI/UIProvider";
 import FunctionBtn from "@/components/UI/FunctionBtn";
-import SyncButton from "@/components/Agents/SyncButton";
 import {Pools} from "@/lib/types";
 import SwitchButton from "@/components/Pools/SwitchButton";
 import DeleteButton from "@/components/Pools/DeleteButton";
-import EditButton from "@/components/Pools/EditPoolModal";
 import Image from "next/image";
-import EditAgentModal from "@/components/Agents/EditAgentModal";
 import EditPoolModal from "@/components/Pools/EditPoolModal";
 import AddPool from "@/components/Pools/AddPool";
 
 type PoolRow = Pools & {
     Used: 'used' | 'unused';
-    UpdatedFormatted: string; // если хочешь форматировать дату отдельно
+    UpdatedTime: string;
 }
 
 const columns = [
@@ -62,7 +58,7 @@ export default function Page() {
             }
             const pools: Pools[] = await res.json();
 
-            const format = pools.map((item):Pools => ({
+            const format = pools.map((item):PoolRow => ({
                 ...item,
                 Used: item.FilterKeys ? "used" : 'unused',
                 UpdatedTime: new Date(item.Updated).toLocaleString(),
@@ -83,17 +79,6 @@ export default function Page() {
     useEffect(() => {
         fetchPools()
     }, []);
-
-    useEffect(() => {
-        const format = PoolsLocal.map((item) => ({
-            ...item,
-            Used: item.FilterKeys ? "used" : 'unused',
-            UpdatedTime: new Date(item.Updated).toLocaleString(),
-        }))
-        setData(format)
-    }, []);
-
-
 
     const statistic = {
         total: {count: data.length, text: 'Total Pools'},

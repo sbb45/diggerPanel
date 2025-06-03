@@ -101,7 +101,7 @@ export default function OptionUser({ row,actions, fetchUsers }: OptionsButtonPro
     const defaultActions: Action[] = [
         {image:'edit', label: 'Edit User', onClick: fillFormEditUser },
         {image:'sort-horizontal', label: 'Agent Pools', onClick: agentList },
-        {image:'edit', label: 'Pool Pools', onClick: poolList },
+        {image:'edit', label: 'Pool List', onClick: poolList },
         {image:'file-lines', label: 'Server List', onClick: serverList },
         {image:'percent', label: 'Referrals', onClick: referralsList },
     ];
@@ -114,7 +114,7 @@ export default function OptionUser({ row,actions, fetchUsers }: OptionsButtonPro
     }
 
     async function poolList(){
-        openModal(<ListPools row={row} onSuccess={fetchUsers} />, 'Pool Pools')
+        openModal(<ListPools row={row} onSuccess={fetchUsers} />, 'List of Pools')
     }
 
     async function serverList(){

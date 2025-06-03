@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
+import { User } from '@/lib/types';
 
 type AddServerProps = {
     userId: number;
@@ -20,19 +21,30 @@ const AddServer = ({ userId, onClose, onSuccess }: AddServerProps) => {
     async function saveServer() {
         setLoading(true);
         try {
-            const body = {
-                UserId: userId,
-                Name: name,
-                Addr: addr,
-            };
-            const res = await fetch(`${api}/api/v1/servers`, {
+            // Получаем всех пользователей
+            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            if (!resUsers.ok) throw new Error(await resUsers.text());
+            const allUsers: User[] = await resUsers.json();
+
+            const user = allUsers.find(u => u.Id === userId);
+            if (!user) throw new Error('User not found');
+
+            // Добавляем новый сервер в массив Servers (создаем, если его нет)
+            const updatedServers = user.Servers ? [...user.Servers] : [];
+            updatedServers.push({ Name: name, Addr: addr });
+
+            // Обновляем пользователя с новым списком серверов
+            const updatedUser = { ...user, Servers: updatedServers };
+
+            // Сохраняем обновлённого пользователя
+            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify(body),
+                body: JSON.stringify(updatedUser),
             });
 
-            if (!res.ok) throw new Error(await res.text());
+            if (!resSave.ok) throw new Error(await resSave.text());
 
             addToast({ type: 'success', title: 'Created', message: 'Server added successfully' });
             onSuccess();
