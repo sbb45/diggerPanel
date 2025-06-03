@@ -3,6 +3,7 @@ import Image from "next/image";
 import {TableBtn} from "@/app/admin/page.styled";
 import {Pools} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type SwitchButtonProps ={
     row: Pools,
@@ -11,7 +12,6 @@ type SwitchButtonProps ={
 
 const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
     const [loading, setLoading] = useState(false)
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast} = useUI();
 
     async function switchPoolsAction(){

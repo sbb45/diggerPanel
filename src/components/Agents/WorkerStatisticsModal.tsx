@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useUI } from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type Props = {
   agentId: number;
@@ -8,8 +9,7 @@ type Props = {
 
 const WorkerStatisticsModal = ({ agentId, username }: Props) => {
   const { closeModal, addToast } = useUI();
-  const [data, setData] = useState<any>(null);
-  const api = process.env.NEXT_PUBLIC_API_BASE;
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchStats = async () => {

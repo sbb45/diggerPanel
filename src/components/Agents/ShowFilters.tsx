@@ -6,6 +6,7 @@ import { TableActions } from "@/app/admin/page.styled";
 import { TableBtn } from "@/app/admin/page.styled";
 import Image from "next/image";
 import Input from "@/components/UI/Input";
+import {api} from "@/lib/const";
 
 interface Filter {
     Note: string;
@@ -34,7 +35,6 @@ const columns = [
 ];
 
 const ShowFilters = ({ row, onClose }: EditAgentModalProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const { addToast, openModal } = useUI();
     const [filters, setFilters] = useState<Filter[]>([]);
 

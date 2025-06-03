@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {bgColor, grayColor} from "@/styles/colors";
 
 type InputProps = {
-    value: string;
+    value: string | number;
     label: string;
     type?: string;
     onChange: (value: string) => void;

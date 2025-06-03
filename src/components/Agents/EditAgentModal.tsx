@@ -3,6 +3,7 @@ import {AgentAll} from "@/lib/types";
 import Dropdown from "@/components/UI/Dropdown";
 import Input from "@/components/UI/Input";
 import {useUI} from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type EditAgentModalProps ={
     row: AgentAll,
@@ -23,7 +24,6 @@ const modeOptions = [
 ]
 
 const EditAgentModal = ({row, onClose, onSuccess }:EditAgentModalProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast,closeModal} = useUI();
     const [state, setState] = useState(
         stateOptions.find(opt => opt.value === String(row.State)) || stateOptions[0]

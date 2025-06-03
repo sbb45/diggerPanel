@@ -4,13 +4,13 @@ import Image from "next/image";
 import {AuthBg, AuthBtn, AuthError, AuthForm, AuthInput, AuthWrapper} from "@/app/auth/page.styled";
 import {useRouter} from "next/navigation";
 import Copyright from "@/components/UI/Copyright";
+import {api} from "@/lib/const";
 
 export default function AuthPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const router = useRouter()
-    const api = process.env.NEXT_PUBLIC_API_BASE
 
     async function send(e?: React.FormEvent) {
         if (e) e.preventDefault()

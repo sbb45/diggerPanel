@@ -3,10 +3,10 @@ import Image from "next/image";
 import {TableBtn} from "@/app/admin/page.styled";
 import {useUI} from "@/components/UI/UIProvider";
 import {AgentButtonProps} from "@/lib/types";
+import {api} from "@/lib/const";
 
 
 const SyncButton: React.FC<AgentButtonProps> = ({row}:AgentButtonProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(false)
     const {addToast} = useUI();
 
@@ -14,7 +14,7 @@ const SyncButton: React.FC<AgentButtonProps> = ({row}:AgentButtonProps) => {
         const agentId = row.Id
         try {
             setLoading(true)
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/sync`,{
+            const res = await fetch(`${api}/api/v1/agents/${agentId}/command/sync`,{
                 method:'POST',
                 credentials: "include",
             })

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from "@/components/UI/Input";
 import Dropdown from "@/components/UI/Dropdown";
 import { useUI } from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type Props = {
     onClose: () => void;
@@ -16,7 +17,6 @@ const booleanOptions = [
 
 const AddUser = ({ onSuccess, onClose }: Props) => {
     const { closeModal, addToast } = useUI();
-    const api = process.env.NEXT_PUBLIC_API_BASE;
 
     const [note, setNote] = useState('');
     const [login, setLogin] = useState('');

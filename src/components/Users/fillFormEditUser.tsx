@@ -3,6 +3,7 @@ import Input from "@/components/UI/Input";
 import { useUI } from "@/components/UI/UIProvider";
 import { User } from "@/lib/types";
 import Dropdown from "@/components/UI/Dropdown";
+import {api} from "@/lib/const";
 
 type Props = {
     row: User;
@@ -17,7 +18,6 @@ const booleanOptions = [
 
 const FillFormEditUser = ({ row, onSuccess, onClose }: Props) => {
     const { closeModal, addToast } = useUI();
-    const api = process.env.NEXT_PUBLIC_API_BASE;
 
     const [note, setNote] = useState(row.Note);
     const [login, setLogin] = useState(row.Login);

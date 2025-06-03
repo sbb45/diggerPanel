@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "@/components/UI/Input";
 import { Pools } from "@/lib/types";
 import { useUI } from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type Props = {
     row: Pools;
@@ -11,8 +12,6 @@ type Props = {
 
 const EditPoolModal = ({ row, onSuccess, onClose }: Props) => {
     const { closeModal, addToast } = useUI();
-    const api = process.env.NEXT_PUBLIC_API_BASE
-
     const [note, setNote] = useState(row.Note);
     const [address, setAddress] = useState(row.Address);
     const [username, setUsername] = useState(row.Username);

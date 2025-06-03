@@ -15,6 +15,7 @@ import DeleteButton from "@/components/Pools/DeleteButton";
 import Image from "next/image";
 import EditPoolModal from "@/components/Pools/EditPoolModal";
 import AddPool from "@/components/Pools/AddPool";
+import {api} from "@/lib/const";
 
 type PoolRow = Pools & {
     Used: 'used' | 'unused';
@@ -38,7 +39,6 @@ const filterOnline = [
 ];
 
 export default function Page() {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(true);
     const {addToast,openModal, closeModal} = useUI();
     const [data, setData] = useState<PoolRow[]>([])

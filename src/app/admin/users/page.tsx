@@ -13,6 +13,7 @@ import ClearFilter from "@/components/UI/ClearFilter";
 import DeleteUser from "@/components/Users/DeleteUser";
 import OptionUser from "@/components/Users/OptionUser";
 import AddUser from "@/components/Users/AddUser";
+import {api} from "@/lib/const";
 
 const columns = [
     { key: 'Source', label: 'Source' },
@@ -34,7 +35,6 @@ const filterOptions = [
 ];
 
 export default function UsersPage() {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const { addToast, openModal, closeModal } = useUI();
 
     const [users, setUsers] = useState<User[]>([]);

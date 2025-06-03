@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
 import { User, Pools } from '@/lib/types';
+import {api} from "@/lib/const";
 
 type AddPoolProps = {
     userId: number;
@@ -11,7 +12,6 @@ type AddPoolProps = {
 };
 
 export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const { addToast, closeModal } = useUI();
 
     const [address, setAddress] = useState('');

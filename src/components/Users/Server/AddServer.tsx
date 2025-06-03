@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
 import { User } from '@/lib/types';
+import {api} from "@/lib/const";
 
 type AddServerProps = {
     userId: number;
@@ -11,7 +12,6 @@ type AddServerProps = {
 };
 
 const AddServer = ({ userId, onClose, onSuccess }: AddServerProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const { addToast, closeModal } = useUI();
 
     const [name, setName] = useState('');

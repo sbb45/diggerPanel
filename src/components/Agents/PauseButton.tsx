@@ -3,11 +3,11 @@ import {AgentButtonProps} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
 import Image from "next/image";
 import {TableBtn} from "@/app/admin/page.styled";
+import {api} from "@/lib/const";
 
 
 const PauseButton = ({row, fetchAgents}: AgentButtonProps) => {
     const [loading, setLoading] = useState(false)
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const action = row.Pause ? 'resume' : 'pause'
     const {addToast} = useUI();
 
@@ -15,7 +15,7 @@ const PauseButton = ({row, fetchAgents}: AgentButtonProps) => {
         if(!row.Online || loading) return;
         setLoading(true)
         try {
-            const res = await fetch(api+`/api/v1/agents/${row.Id}/command/${action}`,{
+            const res = await fetch(`${api}/api/v1/agents/${row.Id}/command/${action}`,{
                 method: 'POST',
                 credentials: "include"
             })

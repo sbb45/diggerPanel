@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "@/components/UI/Input";
 import { useUI } from "@/components/UI/UIProvider";
+import {api} from "@/lib/const";
 
 type Props = {
     onClose: ()=>void;
@@ -9,7 +10,6 @@ type Props = {
 
 const AddPool = ({ onSuccess, onClose }: Props) => {
     const { closeModal, addToast } = useUI();
-    const api = process.env.NEXT_PUBLIC_API_BASE
 
     const [note, setNote] = useState('');
     const [address, setAddress] = useState('');

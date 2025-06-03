@@ -6,6 +6,7 @@ import {TableActions} from "@/app/admin/page.styled";
 import {TableBtn} from "@/app/admin/page.styled";
 import Image from "next/image";
 import WorkerStatisticsModal from "@/components/Agents/WorkerStatisticsModal";
+import {api} from "@/lib/const";
 
 type EditAgentModalProps ={
     row: AgentAll,
@@ -57,7 +58,6 @@ const columns = [
 ]
 
 const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast,openModal} = useUI();
     const [connections, setConnections] = useState([]);
 

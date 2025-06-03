@@ -6,6 +6,7 @@ import Table from '@/components/UI/Table';
 import {TableActions, TableBtn} from '@/app/admin/page.styled';
 import AddPool from "@/components/Users/Pools/AddPool";
 import Image from "next/image";
+import {api} from "@/lib/const";
 
 type ListPoolsProps = {
     row: User;
@@ -21,7 +22,6 @@ const columns = [
 ];
 
 export default function ListPools({ row, onSuccess }: ListPoolsProps) {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const userId = row.Id;
     const { addToast, openModal, closeModal } = useUI();
     const [pools, setPools] = useState<Pools[]>([]);

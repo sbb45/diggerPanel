@@ -13,6 +13,7 @@ import SyncButton from "@/components/Agents/SyncButton";
 import {Agent, AgentAll} from "@/lib/types";
 import PauseButton from "@/components/Agents/PauseButton";
 import OptionsButton from "@/components/Agents/OptionsButton";
+import {api} from "@/lib/const";
 
 const columns = [
     {key: "Online", label: ""},
@@ -42,7 +43,6 @@ const filterOnline = [
 ];
 
 export default function Page() {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const [loading, setLoading] = useState(true);
     const {addToast} = useUI();
     const [data, setData] = useState<FormattedAgent[]>([]);
@@ -205,7 +205,7 @@ export default function Page() {
             ) : (
                 <Table
                     columns={columns}
-                    data={paginateAgents.map(fa => fa.Item)}  // берем именно AgentAll[]
+                    data={paginateAgents.map(fa => fa.Item)}
                     buttons={buttons}
                 />
             )}

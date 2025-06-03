@@ -5,6 +5,8 @@ import Image from "next/image";
 import styled from "styled-components";
 import {blackColor, primaryColor, whiteColor} from "@/styles/colors";
 import {usePathname} from "next/navigation";
+import {useUI} from "@/components/UI/UIProvider";
+import AdminOptions from "@/components/Admin/AdminOptions";
 
 
 const MenuLogo = styled.div`
@@ -40,6 +42,7 @@ const MenuLink = styled.li`
         font-size: 24px;
         color: ${blackColor};
         z-index: 1;
+        white-space: nowrap;
     }
 
     div {
@@ -93,34 +96,67 @@ const MenuSubLinks = styled.div<{ $isOpen: boolean }>`
 `
 
 const AdminMenu = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null)
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const {openModal, closeModal} = useUI();
     const pathname = usePathname();
 
+    // Функция очистки логов
+    const cleanLogs = async () => {
+        try {
+            const res = await fetch('/api/v1/logs', {
+                method: 'DELETE',
+                credentials: 'include',
+            });
+
+            if (res.status === 401) {
+                window.location.replace("/");
+                return;
+            }
+
+            if (res.status !== 204) {
+                const text = await res.text();
+                alert(`Error: ${res.statusText}: ${text}`);
+            } else {
+                alert(`Logs cleaned`);
+            }
+        } catch {
+            alert('Network error or offline');
+        }
+    };
+
+    function openSettings(){
+        openModal(<AdminOptions onClose={closeModal} />, "Admin Options")
+    }
+    function logout(){
+
+    }
+
     const topMenu = [
-        {label: "Agents", path: '/admin', img: 'agents.svg', imgActive: 'agents-active.svg'},
-        {label: "Pools", path: '/admin/pools', img: 'pools.svg', imgActive: 'pools-active.svg'},
-        {label: "Users", path: '/admin/users', img: 'users.svg', imgActive: 'users-active.svg'},
+        { label: "Agents", path: '/admin', img: 'agents.svg', imgActive: 'agents-active.svg' },
+        { label: "Pools", path: '/admin/pools', img: 'pools.svg', imgActive: 'pools-active.svg' },
+        { label: "Users", path: '/admin/users', img: 'users.svg', imgActive: 'users-active.svg' },
         {
             label: "Logs", img: 'logs.svg', sub: [
-                {label: "Open logs", path: "/admin/logs"},
-                {label: "Clean logs", path: "/admin/logs/clean"}
+                { label: "Open logs", action: () => window.open('/api/v1/logs', '_blank') },
+                { label: "Clean logs", action: cleanLogs }
             ]
         },
-    ]
+    ];
+
     const bottomMenu = [
-        {label: "Options", path: '/admin/options', img: 'options.svg'},
-        {label: "Sign Out", path: '/logout', img: 'logout.svg'},
-    ]
+        { label: "Options", path: '/admin/options', img: 'options.svg', action:openSettings },
+        { label: "Sign Out", path: '/logout', img: 'logout.svg', action:logout },
+    ];
 
     const toggleSubMenu = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index)
-    }
+        setOpenIndex(openIndex === index ? null : index);
+    };
 
     return (
         <>
             <div>
                 <MenuLogo>
-                    <Image src="/icons/logo.png" width='50' height='50' alt='logo' title='logo' loading="lazy"/>
+                    <Image src="/icons/logo.png" width='50' height='50' alt='logo' title='logo' loading="lazy" />
                     <h2>Digger Management System</h2>
                 </MenuLogo>
                 <MenuLinks>
@@ -129,19 +165,22 @@ const AdminMenu = () => {
                             <React.Fragment key={i}>
                                 <MenuLink onClick={() => toggleSubMenu(i)}>
                                     <div>
-                                        <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label}/>
+                                        <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label} />
                                         <p>{item.label}</p>
-                                        <Image src={'/icons/more.svg'} width='25' height='25' alt='more'/>
+                                        <Image src={'/icons/more.svg'} width='25' height='25' alt='more' />
                                     </div>
                                 </MenuLink>
                                 {item.sub && (
                                     <MenuSubLinks $isOpen={openIndex === i}>
                                         {item.sub.map((itemSub, j) => (
-                                            <Link key={j} href={itemSub.path} passHref legacyBehavior>
-                                                <MenuLink>
-                                                    <p>{itemSub.label}</p>
-                                                </MenuLink>
-                                            </Link>
+                                            <MenuLink
+                                                key={j}
+                                                as="button"
+                                                onClick={itemSub.action}
+                                                style={{ cursor: 'pointer', marginBottom: '18px' }}
+                                            >
+                                                <p>{itemSub.label}</p>
+                                            </MenuLink>
                                         ))}
                                     </MenuSubLinks>
                                 )}
@@ -151,7 +190,7 @@ const AdminMenu = () => {
                                 <MenuLink as="a" className={pathname === item.path ? 'active' : ''}>
                                     <div>
                                         <Image
-                                            src={pathname != item.path ? '/icons/' + item.img : '/icons/' + item.imgActive}
+                                            src={pathname !== item.path ? '/icons/' + item.img : '/icons/' + item.imgActive}
                                             width='46' height='46' alt={item.label}></Image>
                                         <p>{item.label}</p>
                                     </div>
@@ -163,14 +202,12 @@ const AdminMenu = () => {
             </div>
             <MenuLinks>
                 {bottomMenu.map((item, i) =>
-                    <Link key={i} href={item.path} passHref legacyBehavior>
-                        <MenuLink key={i}>
-                            <div>
-                                <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label}></Image>
-                                <p>{item.label}</p>
-                            </div>
-                        </MenuLink>
-                    </Link>
+                    <MenuLink key={i}>
+                        <div>
+                            <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label}></Image>
+                            <p>{item.label}</p>
+                        </div>
+                    </MenuLink>
                 )}
             </MenuLinks>
         </>

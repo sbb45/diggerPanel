@@ -12,6 +12,7 @@ import EditAgentModal from "@/components/Agents/EditAgentModal";
 import ShowConnections from "@/components/Agents/ShowConnections";
 import ShowFilters from "@/components/Agents/ShowFilters";
 import ShowTunnels from "@/components/Agents/ShowTunnels";
+import {api} from "@/lib/const";
 
 const slideDown = keyframes`
   from {
@@ -94,7 +95,6 @@ interface OptionsButtonProps {
 }
 
 export default function OptionsButton({ row, actions,fetchAgents }: OptionsButtonProps) {
-    const api = process.env.NEXT_PUBLIC_API_BASE
     const {addToast, openModal, closeModal} = useUI();
     const confirm = useConfirm();
 

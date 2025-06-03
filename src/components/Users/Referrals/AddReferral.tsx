@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '@/components/UI/Input';
 import { useUI } from '@/components/UI/UIProvider';
 import {User} from "@/lib/types";
+import {api} from "@/lib/const";
 
 type Props = {
     userId: number;
@@ -11,7 +12,6 @@ type Props = {
 };
 
 const AddReferral = ({ userId, onClose, onSuccess }: Props) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const { addToast, closeModal } = useUI();
 
     const [address, setAddress] = useState('');

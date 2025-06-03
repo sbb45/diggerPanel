@@ -6,6 +6,7 @@ import { useUI } from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
 import { Loading, TableActions, TableBtn } from "@/app/admin/page.styled";
 import Image from "next/image";
+import {api} from "@/lib/const";
 
 type Props = {
     row: User;
@@ -33,7 +34,6 @@ const columns = [
 ];
 
 const AgentList = ({ row, onSuccess }: Props) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const userId = row.Id;
     const { addToast } = useUI();
 

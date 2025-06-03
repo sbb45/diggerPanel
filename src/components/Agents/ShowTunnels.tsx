@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {AgentAll} from "@/lib/types";
+import {api} from "@/lib/const";
 
 type ShowTunnelsProps = {
     row: AgentAll,
@@ -7,7 +8,6 @@ type ShowTunnelsProps = {
 }
 
 const ShowTunnels = ({row, onClose}:ShowTunnelsProps) => {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const [tunnels, setTunnels] = useState()
 
     const fetchTunnels = async ()=>{

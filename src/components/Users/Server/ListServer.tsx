@@ -6,6 +6,7 @@ import Table from '@/components/UI/Table';
 import { TableActions, TableBtn } from '@/app/admin/page.styled';
 import Image from 'next/image';
 import AddServer from "@/components/Users/Server/AddServer";
+import {api} from "@/lib/const";
 
 type Server = {
     Name: string;
@@ -24,7 +25,6 @@ const columns = [
 ];
 
 export default function ListServer({ row, onSuccess }: ListServersProps) {
-    const api = process.env.NEXT_PUBLIC_API_BASE;
     const userId = row.Id;
     const { addToast, openModal, closeModal } = useUI();
     const [servers, setServers] = useState<Server[]>([]);
