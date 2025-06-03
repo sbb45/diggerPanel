@@ -16,25 +16,14 @@ import OptionsButton from "@/components/Agents/OptionsButton";
 import {api} from "@/lib/const";
 
 const columns = [
-    {key: "Online", label: ""},
-    {key: "Serial", label: "Serial"},
-    {key: "Group", label: "Note/Group"},
-    {key: "Address", label: "Address/Mode"},
-    {key: "Version", label: "Version"},
-    {key: "Connected", label: "Connected"},
-    {key: "actions", label: ""},
+    { key: "Online", label: "" },
+    { key: "Serial", label: "Serial" },
+    { key: "Note", label: "Note/Group" }, // должно совпадать с полем в Agent, например 'Note'
+    { key: "Address", label: "Address/Mode" },
+    { key: "Version", label: "Version" },
+    { key: "Connected", label: "Connected" },
+    { key: "actions", label: "" },
 ];
-
-type FormattedAgent = {
-    Item: Agent;
-    Online: boolean;
-    Serial: string;
-    FilterGroup: string;
-    Group: React.ReactNode;
-    Address: React.ReactNode;
-    Version: React.ReactNode;
-    Connected: string;
-};
 
 const filterOnline = [
     {value: 'all', label: 'All'},
@@ -45,7 +34,7 @@ const filterOnline = [
 export default function Page() {
     const [loading, setLoading] = useState(true);
     const {addToast} = useUI();
-    const [data, setData] = useState<FormattedAgent[]>([]);
+    const [data, setData] = useState<AgentAll[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     const [filterOnlineValue, setFilterOnlineValue] = useState(filterOnline[0])
@@ -77,24 +66,18 @@ export default function Page() {
                 ...Array.from(groupsSet).map(group => ({value: group, label: group}))
             ])
 
-            const format = agents.map((item) => ({
-                Item: item,
+            const format = agents.map(item => ({
+                Id: item.Id,
+                Group: item.Group,
                 Online: item.Online,
                 Serial: item.Serial,
                 FilterGroup: item.Group,
-                Group: (<>
-                    {item.Note}
-                    <br/>
-                    ({item.Group})
-                </>),
+                Note: `${item.Note} (${item.Group})`,
                 Address: item.Address,
-                Version: (<>
-                    {item.Version}
-                    <br/>
-                    ({item.Type})
-                </>),
+                Version: `${item.Version} (${item.Type})`,
                 Connected: new Date(item.Connected).toLocaleString(),
-            }))
+                Item: item,
+            }));
             setData(format)
         } catch (err) {
             addToast({
@@ -205,7 +188,7 @@ export default function Page() {
             ) : (
                 <Table
                     columns={columns}
-                    data={paginateAgents.map(fa => fa.Item)}
+                    data={paginateAgents}
                     buttons={buttons}
                 />
             )}

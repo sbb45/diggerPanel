@@ -16,6 +16,14 @@ export type AgentAll = {
     [key: string]: string | number | boolean | object | null | React.ReactNode | undefined,
     Users?: number[];
     Id: number;
+    Item: Agent;
+    Online: boolean;
+    Serial: string;
+    FilterGroup: string;
+    Group: React.ReactNode;
+    Address: React.ReactNode;
+    Version: React.ReactNode;
+    Connected: string;
 }
 export interface AgentButtonProps {
     row: AgentAll;
