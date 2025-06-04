@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
             displayName: true,
         },
     },
+    basePath: '/admin',
 };
 
 export default nextConfig;
