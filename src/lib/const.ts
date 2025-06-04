@@ -1,1 +1,1 @@
-export const api = 'http://127.0.0.1:28080'
+export const api = 'http://127.0.0.1:28080/admin'
