@@ -4,13 +4,18 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styled, {keyframes} from 'styled-components';
 import Image from 'next/image';
 import {AgentAll} from "@/lib/types";
-import {bgColor, blackColor, whiteColor} from "@/styles/colors";
+import {bgColor, bgHoverColor, blackColor, whiteColor} from "@/styles/colors";
 import {useUI} from "@/components/UI/UIProvider";
 import React from "react";
 import useConfirm from "@/components/UI/UseConfirm";
 import EditAgentModal from "@/components/Agents/EditAgentModal";
 import ShowConnections from "@/components/Agents/ShowConnections";
+import ShowFilters from "@/components/Agents/ShowFilters";
+import ShowTunnels from "@/components/Agents/ShowTunnels";
+import ShowConfigModal from "@/components/Agents/ShowConfigModal";
+import ShowCountersModal from "@/components/Agents/ShowCountersModal";
 import {api} from "@/lib/const";
+
 
 const slideDown = keyframes`
   from {
@@ -40,8 +45,13 @@ const TriggerButton = styled(DropdownMenu.Trigger)`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    transition: background-color .4s ease;
+    &:hover {
+        background-color: ${bgHoverColor};
+    }
 `;
 
 const Content = styled(DropdownMenu.Content)`
@@ -126,7 +136,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         openModal(<ShowConnections row={row} onClose={closeModal} />, 'Remote connections')
     }
     function showFilters(){
-        // openModal(<ShowFilters row={row} onClose={closeModal} />, 'Remote filters')
+        openModal(<ShowFilters row={row} onClose={closeModal} />, 'Remote filters')
     }
     async function cleanFilters(){
         const ok = await confirm({
@@ -137,7 +147,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         })
         if (!ok) return;
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/filters-clean`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/filters-clean`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -160,14 +170,14 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         }
     }
     function showTunnels(){
-        // openModal(<ShowTunnels row={row} onClose={closeModal} />, 'Show Tunnels')
+        openModal(<ShowTunnels row={row} onClose={closeModal} />, 'Show Tunnels')
     }
     function showCounters(){
-        alert('ger')
+        openModal(<ShowCountersModal row={row} onClose={closeModal} />, 'Remote counters')
     }
     async function cleanCounters(){
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/counters-clean`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/counters-clean`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -191,7 +201,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
     }
     async function resetStatistics(){
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/reset-statistics`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/reset-statistics`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -214,14 +224,14 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         }
     }
     function showConfig(){
-        alert('ger')
+        openModal(<ShowConfigModal row={row} onClose={closeModal} />, 'Remote config')
     }
     async function downloadLogs(){
-        window.open(`${api}/api/v1/agents/${agentId}/command/logs`, "_blank")
+        window.open(`${api}api/v1/agents/${agentId}/command/logs`, "_blank")
     }
     async function cleanLogs(){
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/logs-clean`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/logs-clean`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -245,7 +255,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
     }
     async function upgradeAgent(){
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/upgrade`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/upgrade`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -269,7 +279,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
     }
     async function revertAgent(){
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/revert`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/revert`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -294,7 +304,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
     async function disabled(){
         const state = row.State
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/state/${!state}`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/state/${!state}`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -325,7 +335,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         })
         if (!ok) return;
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/reload`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/reload`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -356,7 +366,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         })
         if (!ok) return;
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}/command/restart`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/restart`,{
                 method: 'POST',
                 credentials: 'include'
             })
@@ -385,7 +395,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
         })
         if (!ok) return;
         try {
-            const res = await fetch(api+`/api/v1/agents/${agentId}`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}`,{
                 method: 'DELETE',
                 credentials: 'include'
             })
@@ -428,7 +438,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
                             }}
                             role="menuitem"
                         >
-                            <Image src={`/icons/${image}.svg`} alt={'image'} width={20} height={20} />
+                            <Image src={`/icons/${image}.svg`} alt={'image'} width={28} height={28} />
                             {label}
                         </Item>
                     ))}

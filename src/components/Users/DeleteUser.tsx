@@ -17,7 +17,7 @@ const DeleteUser = ({row, fetchUsers}: DeleteButtonProps) => {
     async function switchPoolsAction(){
         setLoading(true)
         try {
-            const res = await fetch(`${api}/api/v1/users/${row.Id}`,{
+            const res = await fetch(`${api}api/v1/users/${row.Id}`,{
                 method:'DELETE',
                 credentials: 'include'
             })

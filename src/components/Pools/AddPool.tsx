@@ -26,7 +26,7 @@ const AddPool = ({ onSuccess, onClose }: Props) => {
                 Worker: worker,
                 Password: password,
             }
-            const res = await fetch(`${api}/api/v1/pools`, {
+            const res = await fetch(`${api}api/v1/pools`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

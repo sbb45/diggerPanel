@@ -56,7 +56,7 @@ export default function UsersPage() {
     const fetchUsers = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const res = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
             const data: User[] = await res.json();
             const format = data.map((item: User) => ({

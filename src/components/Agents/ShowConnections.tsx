@@ -82,7 +82,7 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
                 title={'Download'}
                 onClick={() =>
                     window.open(
-                        `${api}/api/v1/agents/${row.Id}/command/connection-debug/${row.Item.Key}`,
+                        `${api}api/v1/agents/${row.Id}/command/connection-debug/${row.Item.Key}`,
                         '_blank'
                     )
                 }
@@ -103,7 +103,7 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
 
     const fetchConnections = useCallback(async () => {
         try {
-            const res = await fetch(`${api}/api/v1/agents/${row.Id}/remote/connections`, {
+            const res = await fetch(`${api}api/v1/agents/${row.Id}/remote/connections`, {
                 credentials: 'include'
             });
             if (!res.ok) {
@@ -147,7 +147,7 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
 
     async function closeConnection(agentId: number, key: string) {
         try{
-            const res = await fetch(`${api}/api/v1/agents/${agentId}/command/connection-close/${key}`, {
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/connection-close/${key}`, {
                 method: 'POST',
                 credentials: 'include'
             });

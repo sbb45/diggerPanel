@@ -50,7 +50,7 @@ export default function Page() {
     const fetchPools = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await fetch(api + '/api/v1/pools', { credentials: 'include' });
+            const res = await fetch(`${api}api/v1/pools`, { credentials: 'include' });
             if (!res.ok) {
                 throw new Error(`Server Error: ${await res.text()}`);
             }

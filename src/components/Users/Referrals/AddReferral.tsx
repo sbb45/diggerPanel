@@ -22,7 +22,7 @@ const AddReferral = ({ userId, onClose, onSuccess }: Props) => {
     async function saveReferral() {
         try {
             // Получаем текущего пользователя из API
-            const userRes = await fetch(`${api}/api/v1/users`, {credentials:'include'});
+            const userRes = await fetch(`${api}api/v1/users`, {credentials:'include'});
             const users = await userRes.json();
             const user = users.find((u: User) => u.Id === userId);
             if (!user) throw new Error('User not found');
@@ -39,7 +39,7 @@ const AddReferral = ({ userId, onClose, onSuccess }: Props) => {
             };
 
             // Отправляем обновленного пользователя на сервер
-            const res = await fetch(`${api}/api/v1/users/${userId}`, {
+            const res = await fetch(`${api}api/v1/users/${userId}`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

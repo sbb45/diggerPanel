@@ -18,7 +18,7 @@ const SwitchButton = ({row, fetchPools}: SwitchButtonProps) => {
     async function switchPoolsAction(){
         setLoading(true)
         try {
-            const res = await fetch(`${api}/api/v1/pools/${row.Id}/state/${!row.State}`,{
+            const res = await fetch(`${api}api/v1/pools/${row.Id}/state/${!row.State}`,{
                 method:'POST',
                 credentials: 'include'
             })

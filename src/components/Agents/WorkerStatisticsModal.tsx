@@ -14,7 +14,7 @@ const WorkerStatisticsModal = ({ agentId, username }: Props) => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${api}/api/v1/agents/${agentId}/command/statistic-worker/${username}/1hour`, {
+        const res = await fetch(`${api}api/v1/agents/${agentId}/command/statistic-worker/${username}/1hour`, {
           credentials: 'include'
         });
         if (!res.ok) {

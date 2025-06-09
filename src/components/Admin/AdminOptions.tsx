@@ -37,7 +37,7 @@ const AdminOptions = ({onClose }:Props ) => {
     useEffect(() => {
         async function fetchConfig() {
             try {
-                const res = await fetch(`${api}/api/v1/config`,{
+                const res = await fetch(`${api}api/v1/config`,{
                     credentials: 'include',
                 });
                 if (!res.ok) throw new Error( await res.text());
@@ -70,7 +70,7 @@ const AdminOptions = ({onClose }:Props ) => {
 
     const saveConfig = async () => {
         try {
-            const res = await fetch(`${api}/api/v1/config`, {
+            const res = await fetch(`${api}api/v1/config`, {
                 method: "PUT",
                 credentials: 'include',
                 headers: { "Content-Type": "application/json" },

@@ -104,7 +104,7 @@ const AdminMenu = () => {
 
     const cleanLogs = async () => {
         try {
-            const res = await fetch(`${api}/api/v1/logs`, {
+            const res = await fetch(`${api}api/v1/logs`, {
                 method: 'DELETE',
                 credentials: 'include',
             });
@@ -121,7 +121,7 @@ const AdminMenu = () => {
     }
     async function logout(){
         try {
-            const res = await fetch(`${api}/api/v1/exit`);
+            const res = await fetch(`${api}api/v1/exit`);
             if (!res.ok) {
                 throw new Error('Logout failed');
             }
@@ -137,7 +137,7 @@ const AdminMenu = () => {
         { label: "Users", path: '/admin/users', img: 'users.svg', imgActive: 'users-active.svg' },
         {
             label: "Logs", img: 'logs.svg', sub: [
-                { label: "Open logs", action: () => window.open(`${api}/api/v1/logs`, '_blank') },
+                { label: "Open logs", action: () => window.open(`${api}api/v1/logs`, '_blank') },
                 { label: "Clean logs", action: cleanLogs }
             ]
         },

@@ -23,7 +23,7 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
     const savePool = async () => {
         setLoading(true);
         try {
-            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const resUsers = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!resUsers.ok) throw new Error(await resUsers.text());
             const allUsers: User[] = await resUsers.json();
 
@@ -41,7 +41,7 @@ export default function AddPool({ userId, onClose, onSuccess }: AddPoolProps) {
 
             const updatedUser = { ...user, Pools: updatedPools };
 
-            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
+            const resSave = await fetch(`${api}api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

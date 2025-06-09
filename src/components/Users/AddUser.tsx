@@ -41,7 +41,7 @@ const AddUser = ({ onSuccess, onClose }: Props) => {
                 HideDevHash: hideDevHash.value === 'true',
             };
 
-            const res = await fetch(`${api}/api/v1/users`, {
+            const res = await fetch(`${api}api/v1/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

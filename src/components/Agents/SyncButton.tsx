@@ -14,7 +14,7 @@ const SyncButton: React.FC<AgentButtonProps> = ({row}:AgentButtonProps) => {
         const agentId = row.Id
         try {
             setLoading(true)
-            const res = await fetch(`${api}/api/v1/agents/${agentId}/command/sync`,{
+            const res = await fetch(`${api}api/v1/agents/${agentId}/command/sync`,{
                 method:'POST',
                 credentials: "include",
             })

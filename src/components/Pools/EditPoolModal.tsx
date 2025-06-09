@@ -29,7 +29,7 @@ const EditPoolModal = ({ row, onSuccess, onClose }: Props) => {
                 Password: password,
             };
 
-            const res = await fetch(`${api}/api/v1/pools/${row.Id}`, {
+            const res = await fetch(`${api}api/v1/pools/${row.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

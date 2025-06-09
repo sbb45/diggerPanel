@@ -38,7 +38,7 @@ export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
 
     const fetchUsers = useCallback(async () => {
         try {
-            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const res = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
             const allUsers: User[] = await res.json();
 
@@ -65,7 +65,7 @@ export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
 
     const deleteReferral = async (targetReferral: { Address: string; Login: string; Percent: number }) => {
         try {
-            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const res = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
             const allUsers: User[] = await res.json();
 
@@ -87,7 +87,7 @@ export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
 
             const updatedUser = { ...user, Referrals: updatedReferrals };
 
-            const saveRes = await fetch(`${api}/api/v1/users/${user.Id}`, {
+            const saveRes = await fetch(`${api}api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

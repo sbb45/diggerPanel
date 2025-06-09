@@ -52,7 +52,6 @@ const TableBody = styled.tbody`
         position: relative;
         z-index: 3;
         padding: 0 12px;
-
         height: 80px;
         font-size: 16px;
         &:first-child::before {

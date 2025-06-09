@@ -20,7 +20,7 @@ export default function AuthPage() {
         formData.append('a321', password)
 
         try {
-            const res = await fetch(`${api}/api/v1/auth`, {
+            const res = await fetch(`${api}api/v1/auth`, {
                 method: 'POST',
                 body: formData,
                 credentials: 'include'

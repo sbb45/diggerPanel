@@ -17,7 +17,7 @@ const DeleteButton = ({row, fetchPools}: SwitchButtonProps) => {
     async function switchPoolsAction(){
         setLoading(true)
         try {
-            const res = await fetch(`${api}/api/v1/pools/${row.Id}`,{
+            const res = await fetch(`${api}api/v1/pools/${row.Id}`,{
                 method:'DELETE',
                 credentials: 'include'
             })

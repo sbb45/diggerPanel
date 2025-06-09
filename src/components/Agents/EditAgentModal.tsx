@@ -37,7 +37,7 @@ const EditAgentModal = ({row, onClose, onSuccess }:EditAgentModalProps) => {
 
     async function sendAgent(){
         try{
-            const res = await fetch(`${api}/api/v1/agents/${row.Id}`,{
+            const res = await fetch(`${api}api/v1/agents/${row.Id}`,{
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'

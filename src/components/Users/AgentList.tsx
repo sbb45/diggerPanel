@@ -48,7 +48,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
     const fetchAgents = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await fetch(api + '/api/v1/agents', {
+            const res = await fetch(`${api}api/v1/agents`, {
                 credentials: 'include',
             });
             if (!res.ok) {
@@ -93,7 +93,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
 
     const assignAgent = async (agentId: string, agentSerial: string) => {
         try {
-            const res = await fetch(`${api}/api/v1/users/${userId}/agents/${agentId}`, {
+            const res = await fetch(`${api}api/v1/users/${userId}/agents/${agentId}`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -115,7 +115,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
 
     const releaseAgent = async (agentId: string, agentSerial: string) => {
         try {
-            const res = await fetch(`${api}/api/v1/users/${userId}/agents/${agentId}`, {
+            const res = await fetch(`${api}api/v1/users/${userId}/agents/${agentId}`, {
                 method: "DELETE",
                 credentials: "include",
             });

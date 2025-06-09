@@ -28,7 +28,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
 
     const fetchPools = useCallback(async () => {
         try {
-            const res = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const res = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!res.ok) throw new Error(await res.text());
             const allUsers: User[] = await res.json();
 
@@ -86,7 +86,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
 
     const deletePool = async (index: number) => {
         try {
-            const resUsers = await fetch(`${api}/api/v1/users`, { credentials: 'include' });
+            const resUsers = await fetch(`${api}api/v1/users`, { credentials: 'include' });
             if (!resUsers.ok) throw new Error(await resUsers.text());
             const allUsers: User[] = await resUsers.json();
 
@@ -98,7 +98,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
 
             const updatedUser = { ...user, Pools: updatedPools };
 
-            const resSave = await fetch(`${api}/api/v1/users/${user.Id}`, {
+            const resSave = await fetch(`${api}api/v1/users/${user.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

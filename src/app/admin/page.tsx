@@ -45,7 +45,7 @@ export default function Page() {
     const fetchAgents = useCallback(async () => {
         setLoading(true)
         try {
-            const res = await fetch(api + '/api/v1/agents', {
+            const res = await fetch(`${api}api/v1/agents`, {
                 credentials: 'include',
             })
             if (!res.ok) {
@@ -67,7 +67,7 @@ export default function Page() {
             ])
 
             const format = agents.map(item => ({
-                Id: item.Id,
+                Id: item.Id,              
                 Group: item.Group,
                 Online: item.Online,
                 Serial: item.Serial,
@@ -139,7 +139,7 @@ export default function Page() {
     // Общие активности
     async function backupAction() {
         try {
-            window.open(api + '/api/v1/agents/export', '_blank')
+            window.open(api + 'api/v1/agents/export', '_blank')
         } catch (err) {
             addToast({
                 type: 'danger',
@@ -151,7 +151,7 @@ export default function Page() {
     }
     async function sync() {
         try {
-            const res = await fetch(api + '/api/v1/agents/sync');
+            const res = await fetch(`${api}api/v1/agents/sync`);
             if (!res.ok) throw new Error(`Sync failed: ${res.statusText}`);
             addToast({
                 type: 'success',

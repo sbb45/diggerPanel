@@ -74,7 +74,6 @@ export const TableBtn =styled.button`
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background-color: ${bgColor};
     transition: background-color .4s ease;
     &:hover {
         background-color: ${bgHoverColor};

@@ -15,7 +15,7 @@ const PauseButton = ({row, fetchAgents}: AgentButtonProps) => {
         if(!row.Online || loading) return;
         setLoading(true)
         try {
-            const res = await fetch(`${api}/api/v1/agents/${row.Id}/command/${action}`,{
+            const res = await fetch(`${api}api/v1/agents/${row.Id}/command/${action}`,{
                 method: 'POST',
                 credentials: "include"
             })

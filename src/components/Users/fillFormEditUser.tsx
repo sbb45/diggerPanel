@@ -49,7 +49,7 @@ const FillFormEditUser = ({ row, onSuccess, onClose }: Props) => {
                 HideDevHash: hideDevHash.value === 'true',
             };
 
-            const res = await fetch(`${api}/api/v1/users/${row.Id}`, {
+            const res = await fetch(`${api}api/v1/users/${row.Id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
