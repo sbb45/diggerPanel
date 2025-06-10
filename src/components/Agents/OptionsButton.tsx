@@ -420,7 +420,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
     return (
         <DropdownMenu.Root>
             <TriggerButton title="Настройки" aria-label="Agent actions">
-                <Image src="/icons/options.svg" alt="options" width={28} height={28} />
+                <Image src="/admin/icons/options.svg" alt="options" width={28} height={28} />
             </TriggerButton>
 
             <DropdownMenu.Portal>
@@ -438,7 +438,7 @@ export default function OptionsButton({ row, actions,fetchAgents }: OptionsButto
                             }}
                             role="menuitem"
                         >
-                            <Image src={`/icons/${image}.svg`} alt={'image'} width={28} height={28} />
+                            <Image src={`/admin/icons/${image}.svg`} alt={'image'} width={28} height={28} />
                             {label}
                         </Item>
                     ))}

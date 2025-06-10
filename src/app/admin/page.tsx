@@ -14,11 +14,12 @@ import {Agent, AgentAll} from "@/lib/types";
 import PauseButton from "@/components/Agents/PauseButton";
 import OptionsButton from "@/components/Agents/OptionsButton";
 import {api} from "@/lib/const";
+import {redirect, useRouter} from "next/navigation";
 
 const columns = [
     { key: "Online", label: "" },
     { key: "Serial", label: "Serial" },
-    { key: "Note", label: "Note/Group" }, // должно совпадать с полем в Agent, например 'Note'
+    { key: "Note", label: "Note/Group" },
     { key: "Address", label: "Address/Mode" },
     { key: "Version", label: "Version" },
     { key: "Connected", label: "Connected" },
@@ -36,6 +37,7 @@ export default function Page() {
     const {addToast} = useUI();
     const [data, setData] = useState<AgentAll[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const router = useRouter();
 
     const [filterOnlineValue, setFilterOnlineValue] = useState(filterOnline[0])
     const [filterGroup, setFilterGroup] = useState<{ value: string, label: string }[]>([{value: 'all', label: 'All'}])
@@ -43,31 +45,42 @@ export default function Page() {
 
 
     const fetchAgents = useCallback(async () => {
-        setLoading(true)
+        setLoading(true);
         try {
             const res = await fetch(`${api}api/v1/agents`, {
                 credentials: 'include',
-            })
+            });
+
+            if (res.status === 401) {
+                if (typeof window !== 'undefined') {
+                    router.push(`${window.location.origin}/auth`);
+                }else{
+                    redirect('/auth');
+                }
+                throw new Error('Unauthorized. Redirecting to login...');
+            }
+
             if (!res.ok) {
                 const errorText = await res.text();
                 throw new Error(`Ошибка сервера: ${res.status} ${errorText}`);
             }
+
             const agents: Agent[] = await res.json();
 
             // Заполнение списка уникальными значениями
             const groupsSet = new Set<string>();
             agents.forEach(agent => {
                 if (agent.Group) {
-                    groupsSet.add(agent.Group)
+                    groupsSet.add(agent.Group);
                 }
-            })
+            });
             setFilterGroup([
-                {value: 'all', label: "All"},
-                ...Array.from(groupsSet).map(group => ({value: group, label: group}))
-            ])
+                { value: 'all', label: "All" },
+                ...Array.from(groupsSet).map(group => ({ value: group, label: group }))
+            ]);
 
             const format = agents.map(item => ({
-                Id: item.Id,              
+                Id: item.Id,
                 Group: item.Group,
                 Online: item.Online,
                 Serial: item.Serial,
@@ -78,21 +91,21 @@ export default function Page() {
                 Connected: new Date(item.Connected).toLocaleString(),
                 Item: item,
             }));
-            setData(format)
+            setData(format);
         } catch (err) {
             addToast({
                 type: "danger",
                 title: 'Loading error',
                 message: err instanceof Error ? err.message : 'Unknown error'
-            })
-            console.error('Error when loading agents:', err)
+            });
+            console.error('Error when loading agents:', err);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }, [addToast]);
+    }, [addToast, router]);
 
     useEffect(() => {
-        fetchAgents()
+        fetchAgents();
     }, [fetchAgents]);
 
     const statistic = {

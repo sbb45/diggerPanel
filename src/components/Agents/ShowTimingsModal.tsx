@@ -111,7 +111,7 @@ const ShowTimingsModal = ({agentId, filter, onClose}: ShowTimingsModalProps) => 
         <TableActions>
             <TableBtn title="Toggle State" onClick={() => toggleTimingState(timing)}>
                 <Image
-                    src={timing.Disabled ? "/icons/play-button.svg" : "/icons/stop.svg"}
+                    src={timing.Disabled ? "/admin/icons/play-button.svg" : "/icons/stop.svg"}
                     alt="toggle state"
                     width={20}
                     height={20}
@@ -119,10 +119,10 @@ const ShowTimingsModal = ({agentId, filter, onClose}: ShowTimingsModalProps) => 
                 />
             </TableBtn>
             <TableBtn title="Edit Timing" onClick={() => handleAddEditTiming(timing)}>
-                <Image src="/icons/edit.svg" alt="edit" width={20} height={20} unoptimized/>
+                <Image src="/admin/icons/edit.svg" alt="edit" width={20} height={20} unoptimized/>
             </TableBtn>
             <TableBtn title="Delete Timing" onClick={() => deleteTiming(timing)}>
-                <Image src="/icons/close.svg" alt="delete" width={20} height={20} unoptimized/>
+                <Image src="/admin/icons/close.svg" alt="delete" width={20} height={20} unoptimized/>
             </TableBtn>
         </TableActions>
     );

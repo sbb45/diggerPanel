@@ -20,6 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <link rel="icon" href="//admin.logo.ico" />
+    <link rel="icon" href="/admin/icons/logo.png" type="image/png" sizes="32x32" />
       <body className={roboto.className}>
         <UIProvider>
             {children}

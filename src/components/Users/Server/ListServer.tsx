@@ -97,7 +97,7 @@ export default function ListServer({ row, onSuccess }: ListServersProps) {
         return (
             <TableActions>
                 <TableBtn title="Delete server" onClick={() => deleteServer(index)}>
-                    <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
+                    <Image src="/admin/icons/close.svg" alt="delete" width={28} height={28} />
                 </TableBtn>
             </TableActions>
         );

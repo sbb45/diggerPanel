@@ -128,7 +128,7 @@ export default function OptionUser({ row,actions, fetchUsers }: OptionsButtonPro
     return (
         <DropdownMenu.Root>
             <TriggerButton title="Настройки" aria-label="Agent actions">
-                <Image src="/icons/options.svg" alt="options" width={28} height={28} />
+                <Image src="/admin/icons/options.svg" alt="options" width={28} height={28} />
             </TriggerButton>
 
             <DropdownMenu.Portal>
@@ -146,7 +146,7 @@ export default function OptionUser({ row,actions, fetchUsers }: OptionsButtonPro
                             }}
                             role="menuitem"
                         >
-                            <Image src={`/icons/${image}.svg`} alt={'image'} width={20} height={20} />
+                            <Image src={`/admin/icons/${image}.svg`} alt={'image'} width={20} height={20} />
                             {label}
                         </Item>
                     ))}

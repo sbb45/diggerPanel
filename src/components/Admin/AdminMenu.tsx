@@ -8,8 +8,6 @@ import {usePathname} from "next/navigation";
 import {useUI} from "@/components/UI/UIProvider";
 import AdminOptions from "@/components/Admin/AdminOptions";
 import {api} from "@/lib/const";
-import {router} from "next/client";
-
 
 const MenuLogo = styled.div`
     display: flex;
@@ -121,20 +119,17 @@ const AdminMenu = () => {
     }
     async function logout(){
         try {
-            const res = await fetch(`${api}api/v1/exit`);
-            if (!res.ok) {
-                throw new Error('Logout failed');
-            }
-            router.push('/auth');
+            const res = await fetch(`${api}api/v1/exit`, {credentials: 'include'});
+            if (!res.ok) throw new Error(await res.text());
         } catch (err) {
             addToast({ type: "danger", title:"Logout error", message: err instanceof Error ? err.message : 'Unknown error' });
         }
     }
 
     const topMenu = [
-        { label: "Agents", path: '/admin', img: 'agents.svg', imgActive: 'agents-active.svg' },
-        { label: "Pools", path: '/admin/pools', img: 'pools.svg', imgActive: 'pools-active.svg' },
-        { label: "Users", path: '/admin/users', img: 'users.svg', imgActive: 'users-active.svg' },
+        { label: "Agents", path: '/', img: 'agents.svg', imgActive: 'agents-active.svg' },
+        { label: "Pools", path: '/pools', img: 'pools.svg', imgActive: 'pools-active.svg' },
+        { label: "Users", path: '/users', img: 'users.svg', imgActive: 'users-active.svg' },
         {
             label: "Logs", img: 'logs.svg', sub: [
                 { label: "Open logs", action: () => window.open(`${api}api/v1/logs`, '_blank') },
@@ -144,8 +139,8 @@ const AdminMenu = () => {
     ];
 
     const bottomMenu = [
-        { label: "Options", path: '/admin/options', img: 'options.svg', action:openSettings },
-        { label: "Sign Out", path: '/logout', img: 'logout.svg', action:logout },
+        { label: "Options", path: '/options', img: 'options.svg', action:openSettings },
+        { label: "Sign Out", path: '/auth', img: 'logout.svg', action:logout },
     ];
 
     const toggleSubMenu = (index: number) => {
@@ -156,7 +151,7 @@ const AdminMenu = () => {
         <>
             <div>
                 <MenuLogo>
-                    <Image src="/icons/logo.png" width='50' height='50' alt='logo' title='logo' loading="lazy" />
+                    <Image src="/admin/icons/logo.png" width='50' height='50' alt='logo' title='logo' unoptimized />
                     <h2>Digger Management System</h2>
                 </MenuLogo>
                 <MenuLinks>
@@ -165,9 +160,9 @@ const AdminMenu = () => {
                             <React.Fragment key={i}>
                                 <MenuLink onClick={() => toggleSubMenu(i)}>
                                     <div>
-                                        <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label} />
+                                        <Image src={'/admin/icons/' + item.img} width='46' height='46' alt={item.label} />
                                         <p>{item.label}</p>
-                                        <Image src={'/icons/more.svg'} width='25' height='25' alt='more' />
+                                        <Image src={'/admin/icons/more.svg'} width='25' height='25' alt='more' />
                                     </div>
                                 </MenuLink>
                                 {item.sub && (
@@ -190,7 +185,7 @@ const AdminMenu = () => {
                                 <MenuLink as="a" className={pathname === item.path ? 'active' : ''}>
                                     <div>
                                         <Image
-                                            src={pathname !== item.path ? '/icons/' + item.img : '/icons/' + item.imgActive}
+                                            src={pathname !== item.path ? '/admin/icons/' + item.img : '/admin/icons/' + item.imgActive}
                                             width='46' height='46' alt={item.label}></Image>
                                         <p>{item.label}</p>
                                     </div>
@@ -204,7 +199,7 @@ const AdminMenu = () => {
                 {bottomMenu.map((item, i) =>
                     <MenuLink key={i} onClick={item.action}>
                         <div>
-                            <Image src={'/icons/' + item.img} width='46' height='46' alt={item.label}></Image>
+                            <Image src={'/admin/icons/' + item.img} width='46' height='46' alt={item.label}></Image>
                             <p>{item.label}</p>
                         </div>
                     </MenuLink>

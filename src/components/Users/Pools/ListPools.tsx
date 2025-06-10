@@ -124,7 +124,7 @@ export default function ListPools({ row, onSuccess }: ListPoolsProps) {
     const buttons = (pool: Pools) => (
         <TableActions>
             <TableBtn title="Delete pool" onClick={() => deletePool(pool.Id)}>
-                <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
+                <Image src="/admin/icons/close.svg" alt="delete" width={28} height={28} />
             </TableBtn>
         </TableActions>
     );

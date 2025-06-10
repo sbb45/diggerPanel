@@ -16,6 +16,7 @@ import Image from "next/image";
 import EditPoolModal from "@/components/Pools/EditPoolModal";
 import AddPool from "@/components/Pools/AddPool";
 import {api} from "@/lib/const";
+import {redirect, useRouter} from "next/navigation";
 
 type PoolRow = Pools & {
     Used: 'used' | 'unused';
@@ -43,6 +44,7 @@ export default function Page() {
     const {addToast,openModal, closeModal} = useUI();
     const [data, setData] = useState<PoolRow[]>([])
     const [currentPage, setCurrentPage] = useState(1);
+    const router = useRouter();
 
     const [filterUsedValue, setFilterUsedValue] = useState(filterOnline[0])
 
@@ -51,6 +53,14 @@ export default function Page() {
         setLoading(true);
         try {
             const res = await fetch(`${api}api/v1/pools`, { credentials: 'include' });
+            if (res.status === 401) {
+                if (typeof window !== 'undefined') {
+                    router.push(`${window.location.origin}/auth`);
+                }else{
+                    redirect('/auth');
+                }
+                throw new Error('Unauthorized. Redirecting to login...');
+            }
             if (!res.ok) {
                 throw new Error(`Server Error: ${await res.text()}`);
             }
@@ -71,7 +81,7 @@ export default function Page() {
         } finally {
             setLoading(false);
         }
-    }, [addToast]);
+    }, [addToast,router]);
 
     useEffect(() => {
         fetchPools();
@@ -112,7 +122,7 @@ export default function Page() {
         <TableActions>
             <SwitchButton row={row} fetchPools={fetchPools} />
             <TableBtn disabled={loading} onClick={() => openModal(<EditPoolModal row={row} onClose={closeModal} onSuccess={fetchPools} />, 'Edit Agent')} title={'Delete pool'}>
-                <Image src={`/icons/edit.svg`} alt={'edit'} width={28} height={28}/>
+                <Image src={`/admin/icons/edit.svg`} alt={'edit'} width={28} height={28}/>
             </TableBtn>
             <DeleteButton row={row} fetchPools={fetchPools} />
         </TableActions>

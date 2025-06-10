@@ -42,7 +42,7 @@ const DeleteUser = ({row, fetchUsers}: DeleteButtonProps) => {
 
     return (
         <TableBtn disabled={loading} onClick={() => switchPoolsAction()} title={'Delete pool'}>
-            <Image src={`/icons/trash.svg`} alt={'trash'} width={28} height={28}/>
+            <Image src={`/admin/icons/trash.svg`} alt={'trash'} width={28} height={28}/>
         </TableBtn>
     );
 };

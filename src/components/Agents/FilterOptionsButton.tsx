@@ -128,7 +128,7 @@ export default function FilterOptionsButton({ agentId, filter, fetchFilters, tog
     return (
         <DropdownMenu.Root>
             <TriggerButton title="Настройки" aria-label="Filter actions">
-                <Image src="/icons/options.svg" alt="options" width={28} height={28} />
+                <Image src="/admin/icons/options.svg" alt="options" width={28} height={28} />
             </TriggerButton>
 
             <DropdownMenu.Portal>
@@ -146,7 +146,7 @@ export default function FilterOptionsButton({ agentId, filter, fetchFilters, tog
                             }}
                             role="menuitem"
                         >
-                            <Image src={`/icons/${image}.svg`} alt={'image'} width={28} height={28} />
+                            <Image src={`/admin/icons/${image}.svg`} alt={'image'} width={28} height={28} />
                             {label}
                         </Item>
                     ))}

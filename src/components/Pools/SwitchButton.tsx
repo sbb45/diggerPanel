@@ -43,7 +43,7 @@ const SwitchButton = ({row, fetchPools}: SwitchButtonProps) => {
 
     return (
         <TableBtn disabled={loading} onClick={() => switchPoolsAction()} title={currentState}>
-            <Image src={`/icons/${currentState}.svg`} alt={currentState} width={28} height={28}/>
+            <Image src={`/admin/icons/${currentState}.svg`} alt={currentState} width={28} height={28}/>
         </TableBtn>
     );
 };

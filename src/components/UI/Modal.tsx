@@ -185,7 +185,7 @@ export default function Modal({open, onOpenChangeAction, title, children}:ModalP
                         {title && <Title>{title}</Title>}
                         {children}
                         <CloseBtn aria-label="Close">
-                            <Image src={'/icons/close.svg'} alt={'close'} width={30} height={30} />
+                            <Image src={'/admin/icons/close.svg'} alt={'close'} width={30} height={30} />
                         </CloseBtn>
                     </ContentWrapper>
                 </Dialog.Content>

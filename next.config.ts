@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
     compiler: {
@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
         },
     },
     basePath: '/admin',
+    output: 'export',
+    assetPrefix: '/admin'
 };
 
 export default nextConfig;

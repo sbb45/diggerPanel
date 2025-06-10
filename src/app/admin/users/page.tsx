@@ -14,6 +14,7 @@ import DeleteUser from "@/components/Users/DeleteUser";
 import OptionUser from "@/components/Users/OptionUser";
 import AddUser from "@/components/Users/AddUser";
 import {api} from "@/lib/const";
+import {redirect, useRouter} from "next/navigation";
 
 const columns = [
     { key: 'Source', label: 'Source' },
@@ -36,6 +37,7 @@ const filterOptions = [
 
 export default function UsersPage() {
     const { addToast, openModal, closeModal } = useUI();
+    const router = useRouter();
 
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
@@ -57,6 +59,14 @@ export default function UsersPage() {
         setLoading(true);
         try {
             const res = await fetch(`${api}api/v1/users`, { credentials: 'include' });
+            if (res.status === 401) {
+                if (typeof window !== 'undefined') {
+                    router.push(`${window.location.origin}/auth`);
+                }else{
+                    redirect('/auth');
+                }
+                throw new Error('Unauthorized. Redirecting to login...');
+            }
             if (!res.ok) throw new Error(await res.text());
             const data: User[] = await res.json();
             const format = data.map((item: User) => ({
@@ -84,7 +94,7 @@ export default function UsersPage() {
         } finally {
             setLoading(false);
         }
-    }, [addToast]);
+    }, [addToast, router]);
 
     useEffect(() => {
         fetchUsers();

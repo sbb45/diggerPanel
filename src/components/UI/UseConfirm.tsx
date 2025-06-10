@@ -38,7 +38,7 @@ const UseConfirm = () => {
             openModal(
                 <div className={"modal"}>
                     <div className="content">
-                        <Image src={`/icons/modal/${image}`} alt={image} width={80} height={80} />
+                        <Image src={`/admin/icons/modal/${image}`} alt={image} width={80} height={80} />
                         <p>{message}</p>
                     </div>
                     <div className="btns">

@@ -95,7 +95,7 @@ const Dropdown = ({options, value, onChange, label,style}:DropdownProps) => {
             <LabelDropdown>{label}</LabelDropdown>
             <DropdownHeader onClick={toggleOpen}>
                 <p>{value.label}</p>
-                <Image src={'/icons/arrow.svg'} alt={'arrow'} width={32} height={32} />
+                <Image src={'/admin/icons/arrow.svg'} alt={'arrow'} width={32} height={32} />
             </DropdownHeader>
             <DropdownList $isOpen={isOpen}>
                 {options.map((option, i)=>(

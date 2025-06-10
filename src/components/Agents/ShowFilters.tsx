@@ -113,7 +113,7 @@ const ShowFilters = ({ row, onClose }: EditAgentModalProps) => {
         <TableActions>
             <TableBtn title="Toggle Enabled" onClick={() => toggleFilterEnabled(filter)} >
                 <Image
-                    src={filter.Enabled ? "/icons/play.svg" : "/icons/pause.svg"}
+                    src={filter.Enabled ? "/admin/icons/play.svg" : "/icons/pause.svg"}
                     alt="enabled"
                     width={28}
                     height={28}
@@ -121,7 +121,7 @@ const ShowFilters = ({ row, onClose }: EditAgentModalProps) => {
                 />
             </TableBtn>
             <TableBtn title="Delete Filter" onClick={() => deleteFilter(filter)} >
-                <Image src="/icons/close.svg" alt="delete" width={20} height={20} unoptimized />
+                <Image src="/admin/icons/close.svg" alt="delete" width={20} height={20} unoptimized />
             </TableBtn>
             <FilterOptionsButton agentId={row.Id} filter={filter} fetchFilters={fetchFilters} toggleFilterDebug={toggleFilterDebug} />
         </TableActions>

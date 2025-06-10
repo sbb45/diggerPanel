@@ -30,7 +30,7 @@ export default function AuthPage() {
                 setError(text);
                 return;
             } else {
-                router.push('/admin')
+                router.push('/')
             }
         } catch {
             setError('Server error')
@@ -44,12 +44,12 @@ export default function AuthPage() {
                     <h2>Welcome back!</h2>
                     <p>Manage agents and pools effortlessly</p>
                     <AuthInput>
-                        <Image width='40' height='40' alt='login' title='login' src='/icons/user.svg'/>
+                        <Image width='40' height='40' alt='login' title='login' src='/admin/icons/user.svg'/>
                         <input type="text" placeholder='Username' value={username}
                                onChange={e => setUsername(e.target.value)}/>
                     </AuthInput>
                     <AuthInput>
-                        <Image width='40' height='40' alt='password' title='password' src='/icons/lock.svg'/>
+                        <Image width='40' height='40' alt='password' title='password' src='/admin/icons/lock.svg'/>
                         <input type="password" placeholder='Password' value={password}
                                onChange={e => setPassword(e.target.value)}/>
                     </AuthInput>

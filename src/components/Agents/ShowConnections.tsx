@@ -75,7 +75,7 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
                 }
                 disabled={!row.Item?.Digger}
             >
-                <Image src={`/icons/filter.svg`} alt={'filter'} width={28} height={28} />
+                <Image src={`/admin/icons/filter.svg`} alt={'filter'} width={28} height={28} />
             </TableBtn>
 
             <TableBtn
@@ -88,14 +88,14 @@ const ShowConnections = ({row, onClose}:EditAgentModalProps) => {
                 }
                 disabled={!row.Item?.Filter?.Debug}
             >
-                <Image src={`/icons/download.svg`} alt={'download'} width={28} height={28} />
+                <Image src={`/admin/icons/download.svg`} alt={'download'} width={28} height={28} />
             </TableBtn>
 
             <TableBtn
                 title="Close connection"
                 onClick={() => closeConnection(row.Id, row.Item.Key)}
             >
-                <Image src={`/icons/close.svg`} alt={'close'} width={28} height={28} />
+                <Image src={`/admin/icons/close.svg`} alt={'close'} width={28} height={28} />
             </TableBtn>
         </TableActions>
     );

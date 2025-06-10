@@ -118,7 +118,7 @@ export default function ListReferrals({ row, onSuccess }: ListReferralsProps) {
                 Login: referral.Login,
                 Percent: referral.Percent,
             })}>
-                <Image src="/icons/close.svg" alt="delete" width={28} height={28} />
+                <Image src="/admin/icons/close.svg" alt="delete" width={28} height={28} />
             </TableBtn>
         </TableActions>
     );

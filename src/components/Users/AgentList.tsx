@@ -154,7 +154,7 @@ const AgentList = ({ row, onSuccess }: Props) => {
                     title={assigned ? "Release Agent" : "Assign Agent"}
                 >
                     <Image
-                        src={`/icons/${assigned ? "close" : "plusBlack"}.svg`}
+                        src={`/admin/icons/${assigned ? "close" : "plusBlack"}.svg`}
                         alt={assigned ? "release" : "assign"}
                         width={28}
                         height={28}

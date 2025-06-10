@@ -67,10 +67,10 @@ const ShowTunnels = ({row, onClose}:ShowTunnelsProps) => {
     const buttons = (tunnel: Tunnel) => (
         <TableActions>
             <TableBtn title="Browse" onClick={() => window.open(`http://${row.Address}:${tunnel.Port}`, '_blank')} disabled={!row.Address}>
-                <Image src="/icons/chrome.svg" alt="browse" width={20} height={20} />
+                <Image src="/admin/icons/chrome.svg" alt="browse" width={20} height={20} />
             </TableBtn>
             <TableBtn title="Close" onClick={() => closeTunnel(tunnel.Port)}>
-                <Image src="/icons/close.svg" alt="close" width={20} height={20} />
+                <Image src="/admin/icons/close.svg" alt="close" width={20} height={20} />
             </TableBtn>
         </TableActions>
     );

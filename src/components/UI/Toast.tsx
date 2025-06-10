@@ -56,9 +56,9 @@ const ToastWrapper = styled.div<{$type: 'success' | 'warning' | 'danger'}>`
 `
 
 const icons = {
-    danger: '/icons/error.svg',
-    success: '/icons/success.svg',
-    warning: '/icons/warning.svg',
+    danger: '/admin/icons/error.svg',
+    success: '/admin/icons/success.svg',
+    warning: '/admin/icons/warning.svg',
 }
 interface ToastProps {
     type?: 'danger' | 'warning' | 'success';

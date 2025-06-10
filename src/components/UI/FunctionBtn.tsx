@@ -31,7 +31,7 @@ const Button = styled.button<{ $primary?: boolean }>`
 const FunctionBtn: React.FC<ClearFilterProps> = ({onClick,title,image,primary}) => {
     return (
         <Button onClick={onClick} $primary={primary}>
-            <Image src={'/icons/'+image} alt={image} width={26} height={26} />
+            <Image src={'/admin/icons/'+image} alt={image} width={26} height={26} />
             {title}
         </Button>
     );

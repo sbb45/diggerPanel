@@ -48,7 +48,7 @@ const PauseButton = ({row, fetchAgents}: AgentButtonProps) => {
 
     return (
         <TableBtn title={'Пауза'} onClick={togglePause} disabled={!row.Online || loading}>
-            <Image src={`/icons/${action}.svg`} alt={action} width={28} height={28}/>
+            <Image src={`/admin/icons/${action}.svg`} alt={action} width={28} height={28}/>
         </TableBtn>
     );
 };
