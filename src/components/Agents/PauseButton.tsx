@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {AgentButtonProps} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
 import Image from "next/image";
-import {TableBtn} from "@/app/admin/page.styled";
+import {TableBtn} from "@/app/page.styled";
 import {api} from "@/lib/const";
 
 

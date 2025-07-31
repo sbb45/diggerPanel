@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import { User } from '@/lib/types';
 import { useUI } from '@/components/UI/UIProvider';
 import Table from '@/components/UI/Table';
-import { TableActions, TableBtn } from '@/app/admin/page.styled';
+import { TableActions, TableBtn } from '@/app/page.styled';
 import Image from 'next/image';
 import AddServer from "@/components/Users/Server/AddServer";
 import {api} from "@/lib/const";

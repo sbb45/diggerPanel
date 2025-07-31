@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('_identid');
 
     if (!token && request.nextUrl.pathname.startsWith('/admin')) {
-        return NextResponse.redirect(new URL('/auth', request.url));
+        return NextResponse.redirect(new URL('/admin/auth', request.url));
     }
 
     return NextResponse.next();

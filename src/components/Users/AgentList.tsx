@@ -4,7 +4,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import { AgentAll, User } from "@/lib/types";
 import { useUI } from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
-import { Loading, TableActions, TableBtn } from "@/app/admin/page.styled";
+import { Loading, TableActions, TableBtn } from "@/app/page.styled";
 import Image from "next/image";
 import {api} from "@/lib/const";
 

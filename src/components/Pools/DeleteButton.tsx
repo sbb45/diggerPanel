@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {TableBtn} from "@/app/admin/page.styled";
+import {TableBtn} from "@/app/page.styled";
 import {Pools} from "@/lib/types";
 import {useUI} from "@/components/UI/UIProvider";
 import {api} from "@/lib/const";

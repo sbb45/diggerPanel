@@ -1,5 +1,5 @@
 'use client';
-import {ListManagement, Loading, PaginateBtn, PaginateList, TableActions, TableBtn} from "@/app/admin/page.styled";
+import {ListManagement, Loading, PaginateBtn, PaginateList, TableActions, TableBtn} from "@/app/page.styled";
 import AdminStatistic from "@/components/Admin/AdminStatistic";
 import React, {useCallback, useEffect, useState} from "react";
 import Dropdown from "@/components/UI/Dropdown";
@@ -55,9 +55,9 @@ export default function Page() {
             const res = await fetch(`${api}api/v1/pools`, { credentials: 'include' });
             if (res.status === 401) {
                 if (typeof window !== 'undefined') {
-                    router.push(`${window.location.origin}/auth`);
+                    router.push(`${window.location.origin}/admin/auth`);
                 }else{
-                    redirect('/auth');
+                    redirect('/admin/auth');
                 }
                 throw new Error('Unauthorized. Redirecting to login...');
             }

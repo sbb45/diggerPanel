@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fef1b99e-cb80-4843-9531-7fc5adef598f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/logo.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/digger-panel.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/MullerBold.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/MullerRegular.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/page.styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.styled.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/pools/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/pools/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.module.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Agents/FilterOptionsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/FilterOptionsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Agents/OptionsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/OptionsButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Agents/PauseButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/PauseButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Agents/ShowConnections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/ShowConnections.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Agents/ShowFilters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/ShowFilters.tsx" afterDir="false" />
@@ -32,72 +24,73 @@
       <change beforePath="$PROJECT_DIR$/src/components/Agents/SyncButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Agents/SyncButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Pools/DeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pools/DeleteButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Pools/SwitchButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pools/SwitchButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/ClearFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/ClearFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Dropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/FunctionBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/FunctionBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/UseConfirm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/UseConfirm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/AgentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/AgentList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/DeleteUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/DeleteUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/OptionUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/OptionUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Pools/ListPools.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Pools/ListPools.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Referrals/ListReferrals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Referrals/ListReferrals.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/Server/ListServer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/Server/ListServer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/const.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sbb45"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sbb45&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sbb45/diggerPanel.git",
-    "accountId": "fafb457b-3b9f-4dab-8df5-9a896ecd9524"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sbb45/diggerPanel.git&quot;,
+    &quot;accountId&quot;: &quot;fafb457b-3b9f-4dab-8df5-9a896ecd9524&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\tools\php84\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2yK6gksnNtdnchM6Othkpocliqp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\shalo\\Desktop\\diggerPanel\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\shalo\\Desktop\\diggerPanel\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shalo\Desktop\diggerPanel\out\admin" />
+      <recent name="C:\Users\shalo\Desktop\diggerPanel\src\app" />
       <recent name="C:\Users\shalo\Desktop\diggerPanel\public" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PS-243.23654.168" />
+        <option value="bundled-php-predefined-a98d8de5180a-4c3855d0ab16-com.jetbrains.php.sharedIndexes-PS-243.23654.168" />
       </set>
     </attachedChunks>
   </component>
@@ -110,6 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749571049128</updated>
       <workItem from="1749571053687" duration="6288000" />
+      <workItem from="1753976739245" duration="6432000" />
     </task>
     <servers />
   </component>

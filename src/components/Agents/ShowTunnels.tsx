@@ -3,7 +3,7 @@ import {AgentAll} from "@/lib/types";
 import {api} from "@/lib/const";
 import {useUI} from "@/components/UI/UIProvider";
 import Table from "@/components/UI/Table";
-import {TableActions, TableBtn} from "@/app/admin/page.styled";
+import {TableActions, TableBtn} from "@/app/page.styled";
 import Image from "next/image";
 import Input from "@/components/UI/Input";
 
